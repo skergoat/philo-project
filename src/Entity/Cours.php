@@ -44,6 +44,11 @@ class Cours
      */
     private $lessons;
 
+    /**
+     * @ORM\OneToOne(targetEntity=CoursCardsImage::class, inversedBy="cours", cascade={"persist", "remove"})
+     */
+    private $MainImage;
+
     public function __construct()
     {
         $this->lessons = new ArrayCollection();
@@ -128,6 +133,18 @@ class Cours
                 $lesson->setCours(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getMainImage(): ?CoursCardsImage
+    {
+        return $this->MainImage;
+    }
+
+    public function setMainImage(?CoursCardsImage $MainImage): self
+    {
+        $this->MainImage = $MainImage;
 
         return $this;
     }

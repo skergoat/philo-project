@@ -13,7 +13,7 @@ class CoursFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         // CoursFactory::new()->createMany(10);
-        for($i=0;$i<11;$i++) {
+        for($i=0;$i<21;$i++) {
             // create image 
             $image = new CoursCardsImage();
             $image->setSrc('https://picsum.photos/300');

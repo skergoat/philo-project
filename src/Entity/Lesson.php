@@ -32,6 +32,11 @@ class Lesson
      */
     private $Cours;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $order_id;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +74,18 @@ class Lesson
     public function setCours(?Cours $Cours): self
     {
         $this->Cours = $Cours;
+
+        return $this;
+    }
+
+    public function getOrderId(): ?int
+    {
+        return $this->order_id;
+    }
+
+    public function setOrderId(int $order_id): self
+    {
+        $this->order_id = $order_id;
 
         return $this;
     }

@@ -1,6 +1,5 @@
 /* header provisoire */
 .header-provisoire {
-  border: 2px solid black;
   background: url("https://localhost:8000/images/pic_slide.jpg") no-repeat;
   height: 300px;
 }
@@ -30,4 +29,13 @@
   color: #fff !important;
   background-color: #0d6efd !important;
   border-color: #0d6efd !important;
+}
+
+/* Small devices (landscape phones, 576px and up)*/
+@media (max-width: 576px) {
+  /* cards */
+  .card {
+    margin: auto !important;
+    margin-bottom: 2rem !important;
+  }
 }

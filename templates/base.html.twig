@@ -2,12 +2,42 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-
-        {% block javascripts %}{% endblock %}
+        <title>{% block title %}Philosophie{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+        {% block stylesheets %}
+        <link rel="stylesheet" media="all" href="css/style.css">
+        {% endblock %}
     </head>
     <body>
+        <header id="header">
+            <div class="container">
+                <a href="{{ path('home') }}" id="logo" title="HarrisonHighSchool">HarrisonHighSchool</a>
+                <div class="menu-trigger"></div>
+                <nav id="menu">
+                    <ul>
+                        <li><a href="{{ path('home') }}">Courses</a></li>
+                        <li><a href="{{ path('home') }}">Students</a></li>
+                        <li><a href="{{ path('events') }}">Events</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="{{ path('home') }}">Teachers</a></li>
+                        <li><a href="{{ path('gallery') }}">Gallery</a></li>
+                        <li><a href="#fancy" class="get-contact">Contact</a></li>
+                    </ul>
+                </nav>
+                <!-- / navigation -->
+            </div>
+            <!-- / container -->
+        
+        </header>
+        <!-- / header -->
         {% block body %}{% endblock %}
+    
+        {% block javascripts %}
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script>window.jQuery || document.write("<script src='js/jquery-1.11.1.min.js'>\x3C/script>")</script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>  
+        {% endblock %}
     </body>
 </html>

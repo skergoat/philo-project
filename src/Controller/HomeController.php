@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\CoursRepository;
+use App\Repository\LessonRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -52,10 +53,10 @@ class HomeController extends AbstractController
     }
 
      /**
-     * @Route("/lesson", name="lesson")
+     * @Route("/lesson/{id}", name="lesson")
      */
-    public function lesson(): Response
+    public function lesson(LessonRepository $repository, $id): Response
     {        
-        return $this->render('home/lesson.html.twig');
+        return $this->render('home/lesson.html.twig', ['lesson' => $repository->findBy(['order_id' => $id])]);
     }
 }

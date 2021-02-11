@@ -13,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class HomeController extends AbstractController
 {
     /**
-     * @Route("/", name="home")
+     * @Route("/", name="home", methods={"GET"})
      */
     public function index(): Response
     {
@@ -21,7 +21,7 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/gallery", name="gallery")
+     * @Route("/gallery", name="gallery", methods={"GET"})
      */
     public function gallery(): Response
     {
@@ -29,7 +29,7 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/events", name="events")
+     * @Route("/events", name="events", methods={"GET"})
      */
     public function events(): Response
     {
@@ -37,7 +37,7 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/courses", name="courses")
+     * @Route("/courses", name="courses", methods={"GET"})
      */
     public function courses(Request $request, CoursRepository $repository, PaginatorInterface $paginator): Response
     {   

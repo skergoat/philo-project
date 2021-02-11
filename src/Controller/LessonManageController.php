@@ -26,7 +26,7 @@ class LessonManageController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="show_lesson")
+     * @Route("/{id}", name="show_lesson", methods={"GET"})
      */
     public function show(LessonRepository $repository, $id, CoursRepository $coursRepository): Response
     {   

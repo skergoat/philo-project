@@ -16,7 +16,7 @@
                     <ul>
                         
                         {% if is_granted('ROLE_USER') %}
-                        <li><a href="{{ path('admin') }}">Admin</a></li>
+                        <li><a href="{{ path('cours_index') }}">Admin</a></li>
                         <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
                         {% else %}
                         <li><a href="{{ path('app_login') }}">Connexion</a></li>

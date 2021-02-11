@@ -16,7 +16,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 /**
  * @Route("/lesson")
  */
-class LessonManageController extends AbstractController
+class LessonController extends AbstractController
 {
     private $entityManager;
 

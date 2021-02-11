@@ -17,6 +17,23 @@
   font-size: 15px;
 }
 
+.btn.btn-secondary {
+  background: #7d8797;
+  color: white;
+}
+
+.btn.btn-primary,
+.btn.btn-primary:hover {
+  background: #4280b4 !important;
+  color: white;
+}
+
+.btn.btn-warning,
+.btn.btn-warning:hover {
+  background: #dd9124 !important;
+  color: white;
+}
+
 /*body background*/
 body {
   background: #181924 !important;
@@ -30,4 +47,18 @@ header {
 /*nav*/
 #nav-secondary li a {
   color: rgba(255, 255, 255, 0.75) !important;
+}
+
+/*pagination*/
+.pagination .page-link {
+  background: #2a2b36 !important;
+  border: #2a2b36 !important;
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+.pagination .page-link:hover,
+.pagination .page-item.active > .page-link {
+  background: white !important;
+  border: white !important;
+  color: rgba(0, 0, 0, 0.75) !important;
 }

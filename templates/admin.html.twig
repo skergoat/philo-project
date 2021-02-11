@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Philosophie{% endblock %}</title>
+        <title>{% block title %}Admin{% endblock %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
         {% block stylesheets %}
         <link rel="stylesheet" media="all" href="{{ asset('css/style.css') }}">
@@ -14,30 +14,31 @@
             <div class="container">
                 <nav id="nav-secondary">
                     <ul>
-                        
                         {% if is_granted('ROLE_USER') %}
-                        <li><a href="{{ path('admin') }}">Admin</a></li>
+                        <li><a href="{{ path('home') }}">Accueil</a></li>
                         <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
                         {% else %}
                         <li><a href="{{ path('app_login') }}">Connexion</a></li>
                         {% endif %}
                     </ul>
                 </nav>
-                <a href="{{ path('home') }}" id="logo" title="HarrisonHighSchool">HarrisonHighSchool</a>
-                <div class="menu-trigger"></div>
-                <nav id="menu">
-                    <ul>
-                        <li><a href="{{ path('courses') }}">Courses</a></li>
-                        <li><a href="{{ path('home') }}">Students</a></li>
-                        <li><a href="{{ path('events') }}">Events</a></li>
-                    </ul>
-                    <ul>
-                        <li><a href="{{ path('home') }}">Teachers</a></li>
-                        <li><a href="{{ path('gallery') }}">Gallery</a></li>
-                        <li><a href="#fancy" class="get-contact">Contact</a></li>
-                    </ul>
-                </nav>
-                <!-- / navigation -->
+            </div>
+            <a href="{{ path('home') }}" id="logo" title="HarrisonHighSchool">HarrisonHighSchool</a>
+            <div class="divider"></div>
+            <div class="container">
+            {# <nav id="menu">
+                <ul>
+                    <li><a href="{{ path('courses') }}">Courses</a></li>
+                    <li><a href="{{ path('home') }}">Students</a></li>
+                    <li><a href="{{ path('events') }}">Events</a></li>
+                </ul>
+                <ul>
+                    <li><a href="{{ path('home') }}">Teachers</a></li>
+                    <li><a href="{{ path('gallery') }}">Gallery</a></li>
+                    <li><a href="#fancy" class="get-contact">Contact</a></li>
+                </ul>
+            </nav> #}
+            <!-- / navigation -->
             </div>
             <!-- / container -->
         

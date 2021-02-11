@@ -34,6 +34,11 @@ class LessonManageController extends AbstractController
         $lesson = $repository->findOneBy(['order_id' => $id]); 
         // get current lesson cours_id
         $coursId = $lesson->getCours()->getId();
+        // get lessons before and after 
+        $idBefore =  $id - 1; 
+        $idAfter =  $id + 1; 
+        $before = $repository->findOneBy(['order_id' => $idBefore]);
+        $after = $repository->findOneBy(['order_id' => $idAfter]);
         // get parent cours 
         $cours = $coursRepository->findOneBy(['id' => $coursId]);
         // get child lessons 
@@ -41,25 +46,32 @@ class LessonManageController extends AbstractController
 
         return $this->render('home/lesson.html.twig', [
             'lesson' => $lesson,
-            'lessons' => $lessons 
+            'lessons' => $lessons,
+            'before' => $before,
+            'after' => $after
             ]
         );
     }
 
     /**
-     * @Route("/completed/{id}", name="completed", methods={"POST"})
+     * @Route("/completed/{id}/{value}", name="completed", methods={"POST"})
      */
-    public function completed(Request $request, $id, LessonRepository $repository) : Response 
+    public function completed(Request $request, LessonRepository $repository, $id, $value) : Response 
     {
         // get current lesson
         $lesson = $repository->findOneBy(['id' => $id]);
         // set completed value 
-        $lesson->setCompleted(true);
+        $lesson->setCompleted($value); 
         // save 
-        $this->entityManager->flush($lesson);
-        // send flash message 
-        $this->addFlash('notice', 'Bravo, encore un cours de fini !');
+        $this->entityManager->flush($lesson);        
         // redirect
-        return $this->redirectToRoute('show_lesson', ['id' => $lesson->getOrderId() + 1 ]);
+        if($value == 1) {
+            $redirect = $lesson->getOrderId() + 1;
+            $this->addFlash('notice', 'Bravo, encore un cours de fini !');
+        } 
+        else {
+            $redirect = $lesson->getOrderId();
+        }
+        return $this->redirectToRoute('show_lesson', ['id' =>  $redirect ]);
     }
 }

@@ -1,11 +1,22 @@
 /*General*/
-
 .lesson > h1 {
   font-size: 50px !important;
   color: #151000;
 }
 .lesson p {
   text-align: justify;
+}
+
+a.btn.btn-secondary,
+.btn.btn-secondary {
+  background: #7d8797 !important;
+  color: white !important;
+}
+
+a.btn.btn-success,
+.btn.btn-success {
+  background: #198754 !important;
+  color: white !important;
 }
 
 /* header provisoire */
@@ -51,6 +62,21 @@
 }
 
 /*sidebar*/
-#sidebar p {
+.sidebar-p {
   color: rgb(56, 56, 56) !important;
+  font-weight: 800;
+}
+
+/*completed*/
+.completed {
+  color: #198754 !important;
+  font-weight: 600;
+}
+
+/*arrow left-right*/
+.fa-chevron-left {
+  margin-right: 10px;
+}
+.fa-chevron-right {
+  margin-left: 10px;
 }

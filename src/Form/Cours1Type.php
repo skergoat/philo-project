@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Cours;
+use App\Form\CoursCardsImageFormType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -16,7 +17,7 @@ class Cours1Type extends AbstractType
             ->add('description')
             ->add('level')
             ->add('duration')
-            ->add('MainImage')
+            ->add('MainImage', CoursCardsImageFormType::class)
         ;
     }
 

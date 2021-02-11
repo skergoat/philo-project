@@ -2,28 +2,25 @@
 
 namespace App\Form;
 
-use App\Entity\Cours;
+use App\Entity\CoursCardsImage;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class CoursType extends AbstractType
+class CoursCardsImageFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('titre')
-            ->add('description')
-            ->add('level')
-            ->add('duration')
-            ->add('MainImage')
+            ->add('src')
+            ->add('alt')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Cours::class,
+            'data_class' => CoursCardsImage::class,
         ]);
     }
 }

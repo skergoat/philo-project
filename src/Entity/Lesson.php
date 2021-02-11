@@ -42,6 +42,11 @@ class Lesson
      */
     private $title;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $completed;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -103,6 +108,18 @@ class Lesson
     public function setTitle(?string $title): self
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    public function getCompleted(): ?bool
+    {
+        return $this->completed;
+    }
+
+    public function setCompleted(bool $completed): self
+    {
+        $this->completed = $completed;
 
         return $this;
     }

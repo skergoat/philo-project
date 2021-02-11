@@ -50,6 +50,7 @@ class LessonFixtures extends Fixture
 
 </p><br><p>Ut varius quam mauris, quis hendrerit sem maximus mattis. Integer faucibus commodo quam et volutpat. Nulla quis tellus dui. Fusce ex orci, tristique porttitor leo eu, eleifend consequat nisi. Vivamus euismod neque leo, ac mollis lorem suscipit lobortis. Sed pretium elit elit, id pretium nisl mollis luctus. Sed pharetra libero et libero malesuada egestas. Suspendisse eget pulvinar lorem.</p>');
                 $lesson->setOrderId($i);
+                $lesson->setCompleted(false);
 
                 $manager->persist($lesson);
                 $manager->flush();

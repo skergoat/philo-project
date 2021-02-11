@@ -19,6 +19,16 @@ class LessonRepository extends ServiceEntityRepository
         parent::__construct($registry, Lesson::class);
     }
 
+    // get sidebar results
+    // public function getSidebar()
+    // {
+    //     return $this->createQueryBuilder('l')
+    //         ->setMaxResults(5)
+    //         ->getQuery()
+    //         ->getResult()
+    //     ;
+    // }
+
     // /**
     //  * @return Lesson[] Returns an array of Lesson objects
     //  */

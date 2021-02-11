@@ -37,6 +37,11 @@ class Lesson
      */
     private $order_id;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $title;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,6 +91,18 @@ class Lesson
     public function setOrderId(int $order_id): self
     {
         $this->order_id = $order_id;
+
+        return $this;
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(?string $title): self
+    {
+        $this->title = $title;
 
         return $this;
     }

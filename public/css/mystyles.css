@@ -1,3 +1,13 @@
+/*General*/
+
+.lesson > h1 {
+  font-size: 50px !important;
+  color: #151000;
+}
+.lesson p {
+  text-align: justify;
+}
+
 /* header provisoire */
 .header-provisoire {
   background: url("https://localhost:8000/images/pic_slide.jpg") no-repeat;
@@ -38,4 +48,9 @@
     margin: auto !important;
     margin-bottom: 2rem !important;
   }
+}
+
+/*sidebar*/
+#sidebar p {
+  color: rgb(56, 56, 56) !important;
 }

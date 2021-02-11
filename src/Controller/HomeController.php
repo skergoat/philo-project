@@ -55,8 +55,21 @@ class HomeController extends AbstractController
      /**
      * @Route("/lesson/{id}", name="lesson")
      */
-    public function lesson(LessonRepository $repository, $id): Response
-    {        
-        return $this->render('home/lesson.html.twig', ['lesson' => $repository->findBy(['order_id' => $id])]);
+    public function lesson(LessonRepository $repository, $id, CoursRepository $coursRepository): Response
+    {   
+        // get current lesson 
+        $lesson = $repository->findOneBy(['order_id' => $id]); 
+        // get current lesson cours_id
+        $coursId = $lesson->getCours()->getId();
+        // get parent cours 
+        $cours = $coursRepository->findOneBy(['id' => $coursId]);
+        // get child lessons 
+        $lessons = $cours->getLessons();
+
+        return $this->render('home/lesson.html.twig', [
+            'lesson' => $lesson,
+            'lessons' => $lessons 
+            ]
+        );
     }
 }

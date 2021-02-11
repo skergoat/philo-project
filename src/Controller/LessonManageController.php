@@ -67,11 +67,14 @@ class LessonManageController extends AbstractController
         // redirect
         if($value == 1) {
             $redirect = $lesson->getOrderId() + 1;
-            $this->addFlash('notice', 'Bravo, encore un cours de fini !');
+            $message = 'Bravo, encore un cours de fini !';
         } 
         else {
             $redirect = $lesson->getOrderId();
+            $message = 'Vous pouvez vous remettre à ce cours !';
         }
+        $this->addFlash('notice', $message);
+
         return $this->redirectToRoute('show_lesson', ['id' =>  $redirect ]);
     }
 }

@@ -15,9 +15,17 @@
 	</div>
 	<div class="content">
 		<div class="container">
-			<div class="mb-5 d-flex justify-content-between">
-				<a href="{{ path('show_lesson', {id:before.orderId}) }}" type="button" class="btn btn-secondary"><i class="fas fa-chevron-left"></i> {{ before.title }}</a>
-				<a href="{{ path('show_lesson', {id:after.orderId}) }}" type="button" class="btn btn-secondary">{{ after.title }} <i class="fas fa-chevron-right"></i></a>
+			<div class="mb-5 row">
+				{% if before.orderId is defined %}
+				<div class="{% if after.orderId is defined %}col-6{% else %}col-12{% endif %} d-flex justify-content-start">
+					<a href="{{ path('show_lesson', {id:before.orderId}) }}" type="button" class="btn btn-secondary"><i class="fas fa-chevron-left"></i> {{ before.title }}</a>
+				</div>
+				{% endif %}
+				{% if after.orderId is defined %}
+				<div class="{% if before.orderId is defined %}col-6{% else %}col-12{% endif %} d-flex justify-content-end">
+					<a href="{{ path('show_lesson', {id:after.orderId}) }}" type="button" class="d-block btn btn-secondary">{{ after.title }} <i class="fas fa-chevron-right"></i></a>
+				</div>
+				{% endif %}
 			</div>
 		</div>
 		<div class="container">
@@ -52,7 +60,7 @@
 				<div>
 					<h2 class="mb-4">Sommaire</h2>
 					{% for lessons in lessons %}
-					<p class="sidebar-p {% if lessons.completed == true %} completed {% endif %} mb-3">{{ lessons.title }}</p>
+					<p class="mb-3"><a href="{{ path('show_lesson', {id:lessons.orderId}) }}" class="sidebar-p {% if lessons.completed == true %} completed {% endif %}">{{ lessons.title }}</a></p>
 					{% endfor %}
 				</div>
 			</aside>

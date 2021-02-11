@@ -1,11 +1,22 @@
+/*base*/
+.text-centered {
+  text-align: center !important;
+}
+
+#nav-secondary > ul {
+  display: flex !important;
+  justify-content: flex-end !important;
+}
+
+#nav-secondary > ul li a {
+  margin-left: 20px;
+  font-size: 15px;
+}
+
 /*general*/
 .lesson > h1 {
   font-size: 50px !important;
   color: #151000;
-}
-
-.text-centered {
-  text-align: center !important;
 }
 
 .lesson p {
@@ -34,17 +45,6 @@ a.btn.btn-success,
   font-weight: bold;
   color: white;
   font-size: 50px;
-}
-
-/*nav secondary*/
-#nav-secondary > ul {
-  display: flex !important;
-  justify-content: flex-end !important;
-}
-
-#nav-secondary > ul li a {
-  margin-left: 20px;
-  font-size: 15px;
 }
 
 /* cards */

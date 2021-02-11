@@ -1,0 +1,33 @@
+/*base*/
+.text-centered {
+  text-align: center !important;
+}
+
+.text-white {
+  color: white !important;
+}
+
+#nav-secondary > ul {
+  display: flex !important;
+  justify-content: flex-end !important;
+}
+
+#nav-secondary > ul li a {
+  margin-left: 20px;
+  font-size: 15px;
+}
+
+/*body background*/
+body {
+  background: #181924 !important;
+}
+
+/*header*/
+header {
+  background: #2a2b36 !important;
+}
+
+/*nav*/
+#nav-secondary li a {
+  color: rgba(255, 255, 255, 0.75) !important;
+}

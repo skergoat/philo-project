@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
         {% block stylesheets %}
         <link rel="stylesheet" media="all" href="{{ asset('css/style.css') }}">
-        <link rel="stylesheet" media="all" href="{{ asset('css/mystyles.css') }}">
+        <link rel="stylesheet" media="all" href="{{ asset('css/adminstyles.css') }}">
         {% endblock %}
     </head>
     <body>
@@ -23,25 +23,9 @@
                     </ul>
                 </nav>
             </div>
-            <a href="{{ path('home') }}" id="logo" title="HarrisonHighSchool">HarrisonHighSchool</a>
-            <div class="divider"></div>
-            <div class="container">
-            {# <nav id="menu">
-                <ul>
-                    <li><a href="{{ path('courses') }}">Courses</a></li>
-                    <li><a href="{{ path('home') }}">Students</a></li>
-                    <li><a href="{{ path('events') }}">Events</a></li>
-                </ul>
-                <ul>
-                    <li><a href="{{ path('home') }}">Teachers</a></li>
-                    <li><a href="{{ path('gallery') }}">Gallery</a></li>
-                    <li><a href="#fancy" class="get-contact">Contact</a></li>
-                </ul>
-            </nav> #}
-            <!-- / navigation -->
-            </div>
-            <!-- / container -->
-        
+            {# <a href="{{ path('home') }}" id="logo" title="HarrisonHighSchool">HarrisonHighSchool</a> #}
+            <h1 class="text-centered text-white mt-3">Administration</h1>
+            {# <div class="divider"></div> #}
         </header>
         <!-- / header -->
         {% block body %}{% endblock %}

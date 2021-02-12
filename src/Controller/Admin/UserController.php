@@ -89,9 +89,11 @@ class UserController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             // edit roles 
-            $role[] = $form['roles']->getData();
-            $user = $form->getData();
-            $user->setRoles($role);
+            if($form['roles']->getData()) {
+                $role[] = $form['roles']->getData();
+                $user = $form->getData();
+                $user->setRoles($role);
+            }
             // flush 
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('notice', 'Utilisateur Modifié !');

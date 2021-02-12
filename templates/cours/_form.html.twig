@@ -1,4 +1,61 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <div class="col-lg-6 form-group">
+        {{ form_label(form.titre, 'Titre') }}
+        {% if form.titre.vars.errors | length == 0 %}
+        {{ form_widget(form.titre, {'label': 'Titre', 'attr' : { class: 'form-control' }} ) }}
+        {% else %}
+        {{ form_widget(form.titre, {'label': 'Titre', 'attr' : { class: 'form-control is-invalid' }} ) }}
+        {% endif %}
+        <div class="form-error">
+            {{ form_errors(form.titre) }}
+        </div>
+    </div><br>
+    <div class="col-lg-6 form-group">
+        {{ form_label(form.level, 'Niveau') }}
+        {% if form.level.vars.errors | length == 0 %}
+        {{ form_widget(form.level, {'label': 'Niveau', 'attr' : { class: 'form-control' }} ) }}
+        {% else %}
+        {{ form_widget(form.level, {'label': 'Niveau', 'attr' : { class: 'form-control is-invalid' }} ) }}
+        {% endif %}
+        <div class="form-error">
+            {{ form_errors(form.level) }}
+        </div>
+    </div><br>
+    <div class="col-lg-6 form-group">
+        {{ form_label(form.duration, 'Durée') }}
+        {% if form.duration.vars.errors | length == 0 %}
+        {{ form_widget(form.duration, {'label': 'Durée', 'attr' : { class: 'form-control' }} ) }}
+        {% else %}
+        {{ form_widget(form.duration, {'label': 'Durée', 'attr' : { class: 'form-control is-invalid' }} ) }}
+        {% endif %}
+        <div class="form-error">
+            {{ form_errors(form.duration) }}
+        </div>
+    </div><br>
+    {# <div class="col-lg-6 form-group">
+        {{ form_label(form.duration, 'Durée') }}
+        {% if form.duration.vars.errors | length == 0 %}
+        {{ form_widget(form.duration, {'label': 'Durée', 'attr' : { class: 'form-control' }} ) }}
+        {% else %}
+        {{ form_widget(form.duration, {'label': 'Durée', 'attr' : { class: 'form-control is-invalid' }} ) }}
+        {% endif %}
+        <div class="form-error">
+            {{ form_errors(form.duration) }}
+        </div>
+        <button class="btn">{{ button_label|default('Save') }}</button>
+    </div> #}
+    <div class="col-lg-6 form-group">
+        {{ form_label(form.description, 'Description') }}
+        {% if form.description.vars.errors | length == 0 %}
+        {{ form_widget(form.description, {'label': 'Description', 'attr' : { class: 'form-control', rows: '10' }} ) }}
+        {% else %}
+        {{ form_widget(form.description, {'label': 'Description', 'attr' : { class: 'form-control is-invalid' }} ) }}
+        {% endif %}
+        <div class="form-error">
+            {{ form_errors(form.description) }}
+        </div>
+    </div><br>
+    <button class="btn btn-primary d-block mx-auto w-50">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
+
+

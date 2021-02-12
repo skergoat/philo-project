@@ -7,16 +7,18 @@ use App\Form\CoursCardsImageFormType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class Cours1Type extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('titre')
-            ->add('description')
-            ->add('level')
-            ->add('duration')
+            ->add('titre', TextType::class)
+            ->add('level', TextType::class)
+            ->add('duration', TextType::class)
+            ->add('description', TextareaType::class)
             ->add('MainImage', CoursCardsImageFormType::class)
         ;
     }

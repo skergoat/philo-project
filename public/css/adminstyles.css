@@ -62,3 +62,13 @@ header {
   border: white !important;
   color: rgba(0, 0, 0, 0.75) !important;
 }
+
+/*label*/
+label {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+/*form*/
+.form-group {
+  margin: auto !important;
+}

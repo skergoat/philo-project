@@ -13,8 +13,9 @@
     <body>
         <header id="header">
             <div class="container">
-                <nav id="nav-secondary">
-                    <ul>
+                <nav id="nav-secondary" class="d-flex">
+                    <div class="text-casse col-6">Utilisateur connecté : {{ app.user.email }}</div>
+                    <ul class="col-6">
                         {# check url with Twitg #}
                         <li><a href="{{ path('home') }}">Accueil du Site</a></li>
                         {% if '/user/' in path(app.request.attributes.get('_route'),
@@ -28,8 +29,7 @@
                 </nav>
             </div>
             {# <a href="{{ path('home') }}" id="logo" title="HarrisonHighSchool">HarrisonHighSchool</a> #}
-            <h1 class="text-centered text-white mt-3">Administration</h1>
-            {# <div class="divider"></div> #}
+            <h1 class="text-centered text-white mt-3">Administration</h1>            
         </header>
         <!-- / header -->
         {% block body %}{% endblock %}

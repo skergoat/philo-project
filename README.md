@@ -1,5 +1,6 @@
 # philo-project
 
+Admin Logins : 
 
-    admin login : admin@gmail.com
-    admin password : admin
+    login : admin@gmail.com
+    password : admin

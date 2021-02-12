@@ -88,6 +88,10 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // edit roles 
+            $role[] = $form['roles']->getData();
+            $user = $form->getData();
+            $user->setRoles($role);
             // flush 
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('notice', 'Utilisateur Modifié !');
@@ -99,7 +103,6 @@ class UserController extends AbstractController
 
         if($formPassword->isSubmitted() && $formPassword->isValid() ) {
             // encode password 
-            $user = $formPassword->getData();
             $user = $formPassword->getData();
             $user->setPassword($this->passwordEncoder->encodePassword(
                 $user,

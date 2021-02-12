@@ -1,2 +1,6 @@
 # philo-project
-philosophie
+
+Admin Logins : 
+
+    login : admin@gmail.com
+    password : admin

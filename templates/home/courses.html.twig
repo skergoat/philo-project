@@ -26,7 +26,7 @@
 					<div class="card-body">
 						<h5 class="card-title">{{ courses.titre }}</h5>
 						<p class="card-text mb-2">{{ courses.description[0:130] }}...</p>
-						<a href="{{ path('show_lesson', {id:1}) }}" class="btn btn-primary">Voir</a>
+						<a href="{{ path('show_cours', {id:courses.id}) }}" class="btn btn-primary">Voir</a>
 					</div>
 				</div>
 				{% endfor %}

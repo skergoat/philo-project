@@ -16,13 +16,18 @@
 	<div class="content">
 		<div class="container">
 			<div class="mb-5 row">
+				{% if lesson.orderId == 1 %}
+				<div class="col-6 d-flex justify-content-start">
+					<a href="{{ path('show_cours', {id:lesson.cours.id}) }}" type="button" class="btn btn-secondary"><i class="fas fa-chevron-left"></i> Introduction </a> 
+				</div>
+				{% endif %}
 				{% if before.orderId is defined %}
 				<div class="{% if after.orderId is defined %}col-6{% else %}col-12{% endif %} d-flex justify-content-start">
 					<a href="{{ path('show_lesson', {id:before.orderId}) }}" type="button" class="btn btn-secondary"><i class="fas fa-chevron-left"></i> {{ before.title }}</a>
 				</div>
 				{% endif %}
 				{% if after.orderId is defined %}
-				<div class="{% if before.orderId is defined %}col-6{% else %}col-12{% endif %} d-flex justify-content-end">
+				<div class="col-6 d-flex justify-content-end">
 					<a href="{{ path('show_lesson', {id:after.orderId}) }}" type="button" class="d-block btn btn-secondary">{{ after.title }} <i class="fas fa-chevron-right"></i></a>
 				</div>
 				{% endif %}
@@ -59,6 +64,7 @@
 			<aside id="sidebar">
 				<div>
 					<h2 class="mb-4">Sommaire</h2>
+					<p class="mb-3"><a href="{{ path('show_cours', {id:lesson.cours.id}) }}" type="button" class="sidebar-p"> Introduction </a></p>
 					{% for lessons in lessons %}
 					<p class="mb-3"><a href="{{ path('show_lesson', {id:lessons.orderId}) }}" class="sidebar-p {% if lessons.completed == true %} completed {% endif %}">{{ lessons.title }}</a></p>
 					{% endfor %}

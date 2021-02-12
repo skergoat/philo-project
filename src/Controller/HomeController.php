@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Cours;
 use App\Repository\CoursRepository;
 use App\Repository\LessonRepository;
 use Knp\Component\Pager\PaginatorInterface;
@@ -50,5 +51,15 @@ class HomeController extends AbstractController
         );
 
         return $this->render('home/courses.html.twig', ['cours' => $pagination]);
+    }
+
+    /**
+     * @Route("courses/{id}", name="show_cours", methods={"GET"})
+     */
+    public function show(Cours $cour): Response
+    {
+        return $this->render('home/cours.html.twig', [
+            'cour' => $cour,
+        ]);
     }
 }

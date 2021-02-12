@@ -3,14 +3,17 @@
 namespace App\Controller\Admin;
 
 use App\Entity\User;
-use App\Form\UserType;
+use App\Form\User\UserType;
+use App\Form\User\UserEditType;
 use App\Repository\UserRepository;
+use App\Form\User\UserPasswordType;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * @Route("/user")
@@ -18,6 +21,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
  */
 class UserController extends AbstractController
 {
+    private $passwordEncoder;
+
+    public function __construct(UserPasswordEncoderInterface $passwordEncoder)
+    {
+        $this->passwordEncoder = $passwordEncoder;
+    }
     /**
      * @Route("/", name="user_index", methods={"GET"})
      */
@@ -74,18 +83,38 @@ class UserController extends AbstractController
      */
     public function edit(Request $request, User $user): Response
     {
-        $form = $this->createForm(UserType::class, $user);
+        // edit logins 
+        $form = $this->createForm(UserEditType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // flush 
             $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('user_index');
+            $this->addFlash('notice', 'Utilisateur Modifié !');
+            return $this->redirectToRoute('user_edit', ['id' => $user->getId()]);
         }
+        // edit password 
+        $formPassword = $this->createForm(UserPasswordType::class, $user);
+        $formPassword->handleRequest($request);
 
+        if($formPassword->isSubmitted() && $formPassword->isValid() ) {
+            // encode password 
+            $user = $formPassword->getData();
+            $user = $formPassword->getData();
+            $user->setPassword($this->passwordEncoder->encodePassword(
+                $user,
+                $formPassword->getData()->getPassword()
+            ));
+            // flush 
+            $this->getDoctrine()->getManager()->flush();
+            $this->addFlash('notice-mdp', 'Mot de passe Modifié !');
+            return $this->redirectToRoute('user_edit', ['id' => $user->getId()]);
+        }
+        // render template 
         return $this->render('admin/user/edit.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
+            'formPassword' => $formPassword->createView(),
         ]);
     }
 

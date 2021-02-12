@@ -1,0 +1,33 @@
+{{ form_start(form) }}
+    {# Email #}
+    <div class="col-lg-6 form-group">
+        {{ form_label(form.email, 'Email') }}
+        {% if form.email.vars.errors | length == 0 %}
+        {{ form_widget(form.email, {'label': 'Email', 'attr' : { class: 'form-control' }} ) }}
+        {% else %}
+        {{ form_widget(form.email, {'label': 'Email', 'attr' : { class: 'form-control is-invalid' }} ) }}
+        {% endif %}
+        <div class="form-error">
+            {{ form_errors(form.email) }}
+        </div>
+    </div><br>
+    {# Password  #}
+    {# <div class="col-lg-6 form-group">
+        {{ form_label(form.password, 'Mot de Passe') }}
+        {% if form.password.vars.errors | length == 0 %}
+        {{ form_widget(form.password, {'label': 'Mot de Passe', 'attr' : { class: 'form-control' }} ) }}
+        {% else %}
+        {{ form_widget(form.password, {'label': 'Mot de Passe', 'attr' : { class: 'form-control is-invalid' }} ) }}
+        {% endif %}
+        <div class="form-error">
+            {{ form_errors(form.password) }}
+        </div>
+    </div><br> #}
+    {# Roles #}
+    <div class="col-lg-6 form-group">
+        {{ form_label(form.roles, 'Rôle') }}
+        {{ form_widget(form.roles, {'label': 'Rôle', 'attr' : { class: 'form-control' }} ) }}
+    </div><br>
+    <button class="btn btn-primary d-block mx-auto w-50">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
+

@@ -7,7 +7,34 @@
         <a href="{{ path('user_index') }}" class="btn btn-warning d-block">Menu Utilisateurs</a>
         {{ include('admin/user/_delete_form.html.twig') }}
     </div>
-    <h1 class="text-centered mt-5 mb-4">Modifier un Utilisateur</h1>
+    <h1 class="text-centered mt-5 mb-4">Modifier les Logins</h1>
 
-    {{ include('admin/user/_form.html.twig', {'button_label': 'Modifier'}) }}
+    <div class="container mb-5">
+    {% for message in app.flashes('notice') %}
+        <div class="alert alert-success" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+    </div>
+
+    {# read and display just one flash message type #}
+
+    {{ include('admin/user/_edit.html.twig', {'button_label': 'Modifier'}) }}
+
+    <h1 class="text-centered mt-5 mb-4">Modifier le Mot de Passe</h1>
+
+    <div class="container mb-5">
+    {% for message in app.flashes('notice-mdp') %}
+        <div class="alert alert-success" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+    </div>
+
+    {{ include('admin/user/_password.html.twig', {'button_label': 'Modifier'}) }}
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script src="{{ asset('/js/myscript.js') }}"></script>
 {% endblock %}

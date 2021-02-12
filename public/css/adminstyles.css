@@ -9,6 +9,10 @@
   color: white !important;
 }
 
+.text-casse {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
 .btn.btn-secondary,
 .btn.btn-primary,
 .btn.btn-primary:hover,

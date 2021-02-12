@@ -59,15 +59,15 @@ class CoursController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="cours_show", methods={"GET"})
-     */
-    public function show(Cours $cour): Response
-    {
-        return $this->render('cours/show.html.twig', [
-            'cour' => $cour,
-        ]);
-    }
+    // /**
+    //  * @Route("/{id}", name="cours_show", methods={"GET"})
+    //  */
+    // public function show(Cours $cour): Response
+    // {
+    //     return $this->render('cours/show.html.twig', [
+    //         'cour' => $cour,
+    //     ]);
+    // }
 
     /**
      * @Route("/{id}/edit", name="cours_edit", methods={"GET","POST"})

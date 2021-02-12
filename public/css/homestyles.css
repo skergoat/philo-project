@@ -68,6 +68,12 @@ a.btn.btn-success,
   border-color: #0d6efd !important;
 }
 
+.btn.btn-warning,
+.btn.btn-warning:hover {
+  background: #dd9124 !important;
+  color: #fff !important;
+}
+
 /* Small devices (landscape phones, 576px and up)*/
 @media (max-width: 576px) {
   /* cards */

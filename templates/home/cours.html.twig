@@ -13,8 +13,13 @@
     {# divider  #}
     <div class="divider"></div>
     {# content  #}
-    <div class="container">
-        <h1 class="text-centered mb-3">{{ cour.titre }}</h1>
+        <div class="container">
+            <h1 class="text-centered mb-3">{{ cour.titre }}</h1>
+        {% if is_granted("ROLE_ADMIN") %}
+        <div class="col m-3 d-flex">
+            <a href="{{ path('cours_index') }}" class="btn btn-warning d-block">Menu des Cours</a>
+        </div>
+        {% endif %}
         <div class="row justify-content-center">
             <div class="col-1">
                 <i class="far fa-clock"></i> <span>{{ cour.duration }}</span>

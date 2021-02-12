@@ -15,8 +15,14 @@
             <div class="container">
                 <nav id="nav-secondary">
                     <ul>
-                        <li><a href="{{ path('home') }}">Accueil</a></li>
+                        {# check url with Twitg #}
+                        <li><a href="{{ path('home') }}">Accueil du Site</a></li>
+                        {% if '/user/' in path(app.request.attributes.get('_route'),
+                       app.request.attributes.get('_route_params')) %}
+                        <li><a href="{{ path('cours_index') }}">Cours</a></li>
+                        {% else %}
                         <li><a href="{{ path('user_index') }}">Utilisateurs</a></li>
+                        {% endif %}
                         <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
                     </ul>
                 </nav>

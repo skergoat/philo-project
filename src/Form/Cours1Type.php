@@ -19,7 +19,7 @@ class Cours1Type extends AbstractType
             ->add('level', TextType::class)
             ->add('duration', TextType::class)
             ->add('description', TextareaType::class)
-            ->add('MainImage', CoursCardsImageFormType::class)
+            ->add('mainImage', CoursCardsImageFormType::class)
         ;
     }
 

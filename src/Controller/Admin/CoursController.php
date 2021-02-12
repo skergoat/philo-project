@@ -31,7 +31,7 @@ class CoursController extends AbstractController
             10/*limit per page*/
         );
 
-        return $this->render('cours/index.html.twig', [
+        return $this->render('admin/cours/index.html.twig', [
             'cours' => $pagination,
         ]);
     }
@@ -53,7 +53,7 @@ class CoursController extends AbstractController
             return $this->redirectToRoute('cours_index');
         }
 
-        return $this->render('cours/new.html.twig', [
+        return $this->render('admin/cours/new.html.twig', [
             'cour' => $cour,
             'form' => $form->createView(),
         ]);
@@ -83,7 +83,7 @@ class CoursController extends AbstractController
             return $this->redirectToRoute('cours_index');
         }
 
-        return $this->render('cours/edit.html.twig', [
+        return $this->render('admin/cours/edit.html.twig', [
             'cour' => $cour,
             'form' => $form->createView(),
         ]);

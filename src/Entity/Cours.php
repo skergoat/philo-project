@@ -49,6 +49,11 @@ class Cours
      */
     private $MainImage;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $slug;
+
     public function __construct()
     {
         $this->lessons = new ArrayCollection();
@@ -145,6 +150,18 @@ class Cours
     public function setMainImage(?CoursCardsImage $MainImage): self
     {
         $this->MainImage = $MainImage;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }

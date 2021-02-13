@@ -38,17 +38,7 @@ class LessonController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-
-    /**
-     * @Route("/{id}", name="lesson_show", methods={"GET"})
-     */
-    public function show(Lesson $lesson): Response
-    {
-        return $this->render('admin/lesson/show.html.twig', [
-            'lesson' => $lesson,
-        ]);
-    }
-
+    
     /**
      * @Route("/{id}/edit", name="lesson_edit", methods={"GET","POST"})
      */

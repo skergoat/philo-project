@@ -25,17 +25,18 @@ class LessonController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="show_lesson", methods={"GET"})
+     * @Route("/{id}/{order}", name="lesson_show", methods={"GET"})
      */
-    public function show(LessonRepository $repository, $id, CoursRepository $coursRepository): Response
+    public function show(LessonRepository $repository, $id, $order, CoursRepository $coursRepository): Response
     {   
         // get current lesson 
-        $lesson = $repository->findOneBy(['order_id' => $id]); 
+        $lesson = $repository->findOneBy(['order_id' => $order]); 
         // get current lesson cours_id
         $coursId = $lesson->getCours()->getId();
+        dd($coursId);
         // get lessons before and after 
-        $idBefore =  $id - 1; 
-        $idAfter =  $id + 1; 
+        $idBefore =  $order - 1; 
+        $idAfter =  $order + 1; 
         $before = $repository->findOneBy(['order_id' => $idBefore]);
         $after = $repository->findOneBy(['order_id' => $idAfter]);
         // get parent cours 

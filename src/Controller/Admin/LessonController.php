@@ -60,6 +60,62 @@ class LessonController extends AbstractController
     }
 
     /**
+     * @Route("/up/{id}", name="lesson_up", methods={"POST"})
+     */
+    public function lessonUp(Request $request, Lesson $lesson, LessonRepository $lessonRepository)
+    {
+        // cours id 
+        $coursId = $lesson->getCours()->getId();
+
+        if ($this->isCsrfTokenValid('edit'.$lesson->getId(), $request->request->get('_token'))) 
+        {
+            // get request 
+            $order = $request->get('orderId');
+
+            if($order > 0) {
+                // change order item before 
+                $before = $lessonRepository->findOneBy(['order_id' => $order]);
+                $before->setOrderId($order + 1);
+                // edit current lesson and flush
+                $lesson->setOrderId($order);
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->flush();
+            }
+            else {
+                $this->addFlash('error', 'Limite atteinte !');
+                return $this->redirectToRoute('cours_edit', ['id' => $coursId]);
+            }
+        }
+        return $this->redirectToRoute('cours_edit', ['id' => $coursId]);
+    }
+
+     /**
+     * @Route("/down/{id}", name="lesson_down", methods={"POST"})
+     */
+    public function lessonDown(Request $request, Lesson $lesson, LessonRepository $lessonRepository)
+    {
+        if ($this->isCsrfTokenValid('edit'.$lesson->getId(), $request->request->get('_token'))) {
+            // get request 
+            $order = $request->get('orderId');
+            // cours id 
+            $coursId = $lesson->getCours()->getId();
+            // $listCours = $lessonRepository->findBy(['Cours' => $coursId]);
+            // foreach($listCours as $listCours) 
+            // {
+            //     if($listCours->getOrderId() > )
+            // }
+            dd($listCours);
+            // edit and flush 
+            // secure min max
+            $lesson->setOrderId($order);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('cours_index');
+    }
+
+    /**
      * @Route("/{id}", name="lesson_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Lesson $lesson): Response

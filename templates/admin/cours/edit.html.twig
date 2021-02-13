@@ -23,6 +23,14 @@
     {% endfor %}
     </div>
 
+     <div class="container mb-5">
+    {% for message in app.flashes('error') %}
+        <div class="alert alert-danger" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+    </div>
+
     {{ include('admin/cours/_form.html.twig', {'button_label': 'Update'}) }}
 
     {# lessons index #}
@@ -37,21 +45,26 @@
                 <tr>
                     <td>{{ lesson.orderId }}. {{ lesson.title }}</td>
                     {# <td>{{ lesson.content[0:50]|raw  }}...</td> #}
-                    <td>
-                        <form method="post" action="{{ path('cours_delete', {'id': cour.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
-                            <input type="hidden" name="_method" value="DELETE">
-                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ cour.id) }}">
+                    <td class="d-flex">
+                        
+                        <form method="post" action="{{ path('lesson_up', {id:lesson.id}) }}">
+                            {# <input type="hidden" name="_method" value="POST"> #}
+                            <input type="hidden" name="orderId" value="{{ lesson.orderId - 1 }}">
+                            <input type="hidden" name="_token" value="{{ csrf_token('edit' ~ lesson.id) }}">
                             <div>
-                                <button class="btn btn-secondary btn-position" id="up"><i class="fas fa-sort-up"></i></button>
+                                <button class="btn btn-secondary btn-position" id="up" {% if lesson.orderId <= 1 %} disabled {% endif %}><i class="fas fa-sort-up"></i></button>
                             </div>
                         </form>
-                        <form method="post" action="{{ path('cours_delete', {'id': cour.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
-                            <input type="hidden" name="_method" value="DELETE">
-                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ cour.id) }}">
+                        
+                        <form method="post" action="{{ path('lesson_down', {id:lesson.id}) }}">
+                            {# <input type="hidden" name="_method" value="POST"> #}
+                            <input type="hidden" name="orderId" value="{{ lesson.orderId + 1 }}">
+                            <input type="hidden" name="_token" value="{{ csrf_token('edit' ~ lesson.id) }}">
                             <div>
-                                <button class="btn btn-secondary btn-position" id="down"><i class="fas fa-sort-down"></i></button>
+                                <button class="btn btn-secondary btn-position" id="down" {% if lesson.orderId >= lessons|length %} disabled {% endif %}><i class="fas fa-sort-down"></i></button>
                             </div>
                         </form>
+                       
                     </td>
                     <td>
                         <a href="{{ path('lesson_edit', {'id': lesson.id}) }}" class="btn btn-warning" title="Modifier"><i class="far fa-edit"></i></a>

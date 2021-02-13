@@ -612,4 +612,7 @@ Modifications qui ne seront pas validées :
 	[31mmodifié :         templates/home/lesson.html.twig[m
 
 aucune modification n'a été ajoutée à la validation (utilisez "git add" ou "git commit -a")
-bash-3.2$ git commit -am ''m'o'r'e' 'l'e's's'
+bash-3.2$ git commit -am ''m'o'r'e' 'l'e's's'o'n' 'n'a'v'
+[main 18f80b2] more lesson nav
+ 5 files changed, 74 insertions(+), 5 deletions(-)
+bash-3.2$ git push origin main

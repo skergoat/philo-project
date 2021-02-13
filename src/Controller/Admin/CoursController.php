@@ -63,7 +63,7 @@ class CoursController extends AbstractController
     /**
      * @Route("/{id}/edit", name="cours_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Cours $cour, PaginatorInterface $paginator): Response
+    public function edit(Request $request, Cours $cour, PaginatorInterface $paginator, LessonRepository $lessonRepository): Response
     {
         // edit cours
         $form = $this->createForm(Cours1Type::class, $cour);
@@ -75,8 +75,8 @@ class CoursController extends AbstractController
             $this->addFlash('success', 'Cours Modifié !');
             return $this->redirectToRoute('cours_edit', ['id' => $form->getData()->getId()]);
         }
-        // get lessons 
-        $queryBuilder = $cour->getLessons();  
+        // get lessons order by order_id 
+        $queryBuilder = $lessonRepository->findBy(['Cours' => $form->getData()->getId()], ['order_id' => 'ASC']);
     
         $pagination = $paginator->paginate(
             $queryBuilder, /* query NOT result */

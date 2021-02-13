@@ -36,7 +36,23 @@
             {% for lesson in lessons %}
                 <tr>
                     <td>{{ lesson.orderId }}. {{ lesson.title }}</td>
-                    <td>{{ lesson.content[0:50]|raw  }}...</td>
+                    {# <td>{{ lesson.content[0:50]|raw  }}...</td> #}
+                    <td>
+                        <form method="post" action="{{ path('cours_delete', {'id': cour.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ cour.id) }}">
+                            <div>
+                                <button class="btn btn-secondary btn-position" id="up"><i class="fas fa-sort-up"></i></button>
+                            </div>
+                        </form>
+                        <form method="post" action="{{ path('cours_delete', {'id': cour.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ cour.id) }}">
+                            <div>
+                                <button class="btn btn-secondary btn-position" id="down"><i class="fas fa-sort-down"></i></button>
+                            </div>
+                        </form>
+                    </td>
                     <td>
                         <a href="{{ path('lesson_edit', {'id': lesson.id}) }}" class="btn btn-warning" title="Modifier"><i class="far fa-edit"></i></a>
                     </td>

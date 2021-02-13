@@ -74,3 +74,22 @@ body {
 .form-group {
   margin: auto !important;
 }
+
+/*button*/
+.btn-position {
+  min-width: 50px;
+}
+
+.btn-position i {
+  font-size: 25px;
+}
+
+.fa-sort-up {
+  position: relative;
+  top: 5px;
+}
+
+.fa-sort-down {
+  position: relative;
+  top: -5px;
+}

@@ -684,4 +684,24 @@ Fichiers non suivis:
 
 aucune modification n'a été ajoutée à la validation (utilisez "git add" ou "git commit -a")
 bash-3.2$ git add .
-bash-3.2$ git commit -am ''u's'e'r'
+bash-3.2$ git commit -am ''u's'e'r' 'h'e'l'p'e'r'
+[main f6fd431] user helper
+ 7 files changed, 131 insertions(+), 27 deletions(-)
+ create mode 100644 src/Service/UserHelper.php
+bash-3.2$ git push oeirign main
+fatal: 'oeirign' does not appear to be a git repository
+fatal: Impossible de lire le dépôt distant.
+
+Veuillez vérifier que vous avez les droits d'accès
+et que le dépôt existe.
+bash-3.2$ a[Kgit push origin main
+Énumération des objets: 36, fait.
+Décompte des objets:   2% (1/36)   Décompte des objets:   5% (2/36)   Décompte des objets:   8% (3/36)   Décompte des objets:  11% (4/36)   Décompte des objets:  13% (5/36)   Décompte des objets:  16% (6/36)   Décompte des objets:  19% (7/36)   Décompte des objets:  22% (8/36)   Décompte des objets:  25% (9/36)   Décompte des objets:  27% (10/36)   Décompte des objets:  30% (11/36)   Décompte des objets:  33% (12/36)   Décompte des objets:  36% (13/36)   Décompte des objets:  38% (14/36)   Décompte des objets:  41% (15/36)   Décompte des objets:  44% (16/36)   Décompte des objets:  47% (17/36)   Décompte des objets:  50% (18/36)   Décompte des objets:  52% (19/36)   Décompte des objets:  55% (20/36)   Décompte des objets:  58% (21/36)   Décompte des objets:  61% (22/36)   Décompte des objets:  63% (23/36)   Décompte des objets:  66% (24/36)   Décompte des objets:  69% (25/36)   Décompte des objets:  72% (26/36)   Décompte des objets:  75% (27/36)   Décompte des objets:  77% (28/36)   Décompte des objets:  80% (29/36)   Décompte des objets:  83% (30/36)   Décompte des objets:  86% (31/36)   Décompte des objets:  88% (32/36)   Décompte des objets:  91% (33/36)   Décompte des objets:  94% (34/36)   Décompte des objets:  97% (35/36)   Décompte des objets: 100% (36/36)   Décompte des objets: 100% (36/36), fait.
+Compression par delta en utilisant jusqu'à 4 fils d'exécution
+Compression des objets:   5% (1/18)   Compression des objets:  11% (2/18)   Compression des objets:  16% (3/18)   Compression des objets:  22% (4/18)   Compression des objets:  27% (5/18)   Compression des objets:  33% (6/18)   Compression des objets:  38% (7/18)   Compression des objets:  44% (8/18)   Compression des objets:  50% (9/18)   Compression des objets:  55% (10/18)   Compression des objets:  61% (11/18)   Compression des objets:  66% (12/18)   Compression des objets:  72% (13/18)   Compression des objets:  77% (14/18)   Compression des objets:  83% (15/18)   Compression des objets:  88% (16/18)   Compression des objets:  94% (17/18)   Compression des objets: 100% (18/18)   Compression des objets: 100% (18/18), fait.
+Écriture des objets:   5% (1/19)   Écriture des objets:  10% (2/19)   Écriture des objets:  15% (3/19)   Écriture des objets:  21% (4/19)   Écriture des objets:  26% (5/19)   Écriture des objets:  31% (6/19)   Écriture des objets:  36% (7/19)   Écriture des objets:  42% (8/19)   Écriture des objets:  47% (9/19)   Écriture des objets:  52% (10/19)   Écriture des objets:  57% (11/19)   Écriture des objets:  63% (12/19)   Écriture des objets:  68% (13/19)   Écriture des objets:  73% (14/19)   Écriture des objets:  78% (15/19)   Écriture des objets:  84% (16/19)   Écriture des objets:  89% (17/19)   Écriture des objets:  94% (18/19)   Écriture des objets: 100% (19/19)   Écriture des objets: 100% (19/19), 3.09 KiB | 1.55 MiB/s, fait.
+Total 19 (delta 12), réutilisés 0 (delta 0)
+remote: Resolving deltas:   0% (0/12)[Kremote: Resolving deltas:   8% (1/12)[Kremote: Resolving deltas:  16% (2/12)[Kremote: Resolving deltas:  25% (3/12)[Kremote: Resolving deltas:  33% (4/12)[Kremote: Resolving deltas:  41% (5/12)[Kremote: Resolving deltas:  50% (6/12)[Kremote: Resolving deltas:  58% (7/12)[Kremote: Resolving deltas:  66% (8/12)[Kremote: Resolving deltas:  75% (9/12)[Kremote: Resolving deltas:  83% (10/12)[Kremote: Resolving deltas:  91% (11/12)[Kremote: Resolving deltas: 100% (12/12)[Kremote: Resolving deltas: 100% (12/12), completed with 12 local objects.[K
+To https://github.com/skergoat/philo-project.git
+   b6f8487..f6fd431  main -> main
+bash-3.2$ 

@@ -8,17 +8,17 @@ $(function() {
     }
 });
 
-// order 
+// order ********
 $(function() {
-
-    $( ".js-like-article" ).on( "click", function(e) {
-
+    $( ".btn-position" ).on( "click", function(e) {
         e.preventDefault();
-
-        var $link = $(e.currentTarget);
-
-        $.ajax({method:"POST", url: $link.attr('href')}).done(function(data){
-          $('.js-like-article-count').html(data.output);
+        let id = '#form-' + $(this).attr('data-url');
+        let link = $(id).attr('action');
+        alert(id);
+        $.ajax({url: link, 
+            method:"POST",
+            url: link,
+            data: $(id).serialize(), // our data object
         });
     });
 });

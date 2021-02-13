@@ -5,10 +5,10 @@ namespace App\Controller\Admin;
 use App\Entity\Lesson;
 use App\Form\Lessons\LessonType;
 use App\Repository\LessonRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/lesson")
@@ -87,6 +87,7 @@ class LessonController extends AbstractController
             }
         }
         return $this->redirectToRoute('cours_edit', ['id' => $coursId]);
+        // return new Response('done');
     }
 
      /**
@@ -117,6 +118,7 @@ class LessonController extends AbstractController
             }
         }
         return $this->redirectToRoute('cours_edit', ['id' => $coursId]);
+        // return new Response('done');
     }
 
     /**

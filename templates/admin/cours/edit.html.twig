@@ -47,21 +47,21 @@
                     {# <td>{{ lesson.content[0:50]|raw  }}...</td> #}
                     <td class="d-flex">
                         
-                        <form method="post" action="{{ path('lesson_up', {id:lesson.id}) }}">
+                        <form method="post" class="form-position" id="form-up-{{ lesson.id }}" action="{{ path('lesson_up', {id:lesson.id}) }}">
                             {# <input type="hidden" name="_method" value="POST"> #}
                             <input type="hidden" name="orderId" value="{{ lesson.orderId - 1 }}">
                             <input type="hidden" name="_token" value="{{ csrf_token('edit' ~ lesson.id) }}">
                             <div>
-                                <button class="btn btn-secondary btn-position" id="up" {% if lesson.orderId <= 1 %} disabled {% endif %}><i class="fas fa-sort-up"></i></button>
+                                <button class="btn btn-secondary btn-position" id="up" data-url="up-{{ lesson.id }}" {% if lesson.orderId <= 1 %} disabled {% endif %}><i class="fas fa-sort-up"></i></button>
                             </div>
                         </form>
                         
-                        <form method="post" action="{{ path('lesson_down', {id:lesson.id}) }}">
+                        <form method="post" class="form-position" id="form-down-{{ lesson.id }}" action="{{ path('lesson_down', {id:lesson.id}) }}">
                             {# <input type="hidden" name="_method" value="POST"> #}
                             <input type="hidden" name="orderId" value="{{ lesson.orderId + 1 }}">
                             <input type="hidden" name="_token" value="{{ csrf_token('edit' ~ lesson.id) }}">
                             <div>
-                                <button class="btn btn-secondary btn-position" id="down" {% if lesson.orderId >= lessons|length %} disabled {% endif %}><i class="fas fa-sort-down"></i></button>
+                                <button class="btn btn-secondary btn-position" id="down" data-url="down-{{ lesson.id }}"  {% if lesson.orderId >= lessons|length %} disabled {% endif %}><i class="fas fa-sort-down"></i></button>
                             </div>
                         </form>
                        

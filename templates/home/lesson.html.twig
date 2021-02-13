@@ -48,7 +48,7 @@
 			{% endfor %}
 
 			<div class="lesson main-content mb-5">
-				<h1 class="mb-4">{{ lesson.title }}</h1>
+				<h1 class="mb-4">{{ lesson.orderId }}. {{ lesson.title }}</h1>
 				{{ lesson.content|raw }}
 				<br>
 				<div style="display:flex;justify-content:center;">
@@ -71,7 +71,7 @@
 					<h2 class="mb-4">Sommaire</h2>
 					<p class="mb-3"><a href="{{ path('show_cours', {id:lesson.cours.id}) }}" type="button" class="sidebar-p"> Introduction </a></p>
 					{% for lessons in lessons %}
-					<p class="mb-3"><a href="{{ path('lesson_show', {slug: slug, order:after.orderId}) }}" class="sidebar-p {% if lessons.completed == true %} completed {% endif %}">{{ lessons.title }}</a></p>
+					<p class="mb-3"><a href="{{ path('lesson_show', {slug: slug, order:lessons.orderId}) }}" class="sidebar-p {% if lessons.completed == true %} completed {% endif %}">{{ lessons.title }}</a></p>
 					{% endfor %}
 				</div>
 			</aside>

@@ -11,6 +11,17 @@
         </div>
     </div><br>
     <div class="col-lg-6 form-group">
+        {{ form_label(form.order_id, 'Position') }}
+        {% if form.order_id.vars.errors | length == 0 %}
+        {{ form_widget(form.order_id, {'label': 'Position', 'attr' : { class: 'form-control' }} ) }}
+        {% else %}
+        {{ form_widget(form.order_id, {'label': 'Position', 'attr' : { class: 'form-control is-invalid' }} ) }}
+        {% endif %}
+        <div class="form-error">
+            {{ form_errors(form.order_id) }}
+        </div>
+    </div><br>
+    <div class="col-lg-6 form-group">
         {{ form_label(form.video, 'Vidéo') }}
         {% if form.video.vars.errors | length == 0 %}
         {{ form_widget(form.video, {'label': 'Vidéo', 'attr' : { class: 'form-control' }} ) }}

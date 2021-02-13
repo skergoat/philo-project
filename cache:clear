@@ -554,4 +554,62 @@ y
    [33m>[39m [32mloading App\DataFixtures\CoursFixtures[39m
    [33m>[39m [32mloading App\DataFixtures\LessonFixtures[39m
    [33m>[39m [32mloading App\DataFixtures\UserFixture[39m
-bash-3.2$ 
+bash-3.2$ git status 
+Sur la branche main
+Modifications qui ne seront pas validées :
+  (utilisez "git add/rm <fichier>..." pour mettre à jour ce qui sera validé)
+  (utilisez "git checkout -- <fichier>..." pour annuler les modifications dans la copie de travail)
+
+	[31mmodifié :         cache:clear[m
+	[31mmodifié :         src/Controller/Admin/CoursController.php[m
+	[31mmodifié :         src/Controller/Admin/LessonController.php[m
+	[31mmodifié :         src/DataFixtures/LessonFixtures.php[m
+	[31msupprimé :        src/Form/Cours1Type.php[m
+	[31msupprimé :        src/Form/CoursCardsImageFormType.php[m
+	[31msupprimé :        src/Form/LessonType.php[m
+	[31mmodifié :         templates/admin/cours/edit.html.twig[m
+	[31mmodifié :         templates/admin/lesson/_form.html.twig[m
+	[31mmodifié :         templates/admin/lesson/edit.html.twig[m
+	[31mmodifié :         templates/admin/user/index.html.twig[m
+	[31mmodifié :         templates/home/lesson.html.twig[m
+
+Fichiers non suivis:
+  (utilisez "git add <fichier>..." pour inclure dans ce qui sera validé)
+
+	[31msrc/Form/Cours/[m
+	[31msrc/Form/Lessons/[m
+
+aucune modification n'a été ajoutée à la validation (utilisez "git add" ou "git commit -a")
+bash-3.2$ git add .
+bash-3.2$ git commit -am ''n'a'v' 'l'e'c'o'n' 'a'm'[1P'l'm'o's't' 'o'k'
+[main cffb5fd] nav lecon almost ok
+ 12 files changed, 151 insertions(+), 45 deletions(-)
+ rename src/Form/{ => Cours}/Cours1Type.php (92%)
+ rename src/Form/{ => Cours}/CoursCardsImageFormType.php (89%)
+ rename src/Form/{ => Lessons}/LessonType.php (52%)
+ rewrite templates/admin/lesson/_form.html.twig (68%)
+ rewrite templates/admin/lesson/edit.html.twig (74%)
+bash-3.2$ git push origin main
+Énumération des objets: 47, fait.
+Décompte des objets:   2% (1/47)   Décompte des objets:   4% (2/47)   Décompte des objets:   6% (3/47)   Décompte des objets:   8% (4/47)   Décompte des objets:  10% (5/47)   Décompte des objets:  12% (6/47)   Décompte des objets:  14% (7/47)   Décompte des objets:  17% (8/47)   Décompte des objets:  19% (9/47)   Décompte des objets:  21% (10/47)   Décompte des objets:  23% (11/47)   Décompte des objets:  25% (12/47)   Décompte des objets:  27% (13/47)   Décompte des objets:  29% (14/47)   Décompte des objets:  31% (15/47)   Décompte des objets:  34% (16/47)   Décompte des objets:  36% (17/47)   Décompte des objets:  38% (18/47)   Décompte des objets:  40% (19/47)   Décompte des objets:  42% (20/47)   Décompte des objets:  44% (21/47)   Décompte des objets:  46% (22/47)   Décompte des objets:  48% (23/47)   Décompte des objets:  51% (24/47)   Décompte des objets:  53% (25/47)   Décompte des objets:  55% (26/47)   Décompte des objets:  57% (27/47)   Décompte des objets:  59% (28/47)   Décompte des objets:  61% (29/47)   Décompte des objets:  63% (30/47)   Décompte des objets:  65% (31/47)   Décompte des objets:  68% (32/47)   Décompte des objets:  70% (33/47)   Décompte des objets:  72% (34/47)   Décompte des objets:  74% (35/47)   Décompte des objets:  76% (36/47)   Décompte des objets:  78% (37/47)   Décompte des objets:  80% (38/47)   Décompte des objets:  82% (39/47)   Décompte des objets:  85% (40/47)   Décompte des objets:  87% (41/47)   Décompte des objets:  89% (42/47)   Décompte des objets:  91% (43/47)   Décompte des objets:  93% (44/47)   Décompte des objets:  95% (45/47)   Décompte des objets:  97% (46/47)   Décompte des objets: 100% (47/47)   Décompte des objets: 100% (47/47), fait.
+Compression par delta en utilisant jusqu'à 4 fils d'exécution
+Compression des objets:   3% (1/26)   Compression des objets:   7% (2/26)   Compression des objets:  11% (3/26)   Compression des objets:  15% (4/26)   Compression des objets:  19% (5/26)   Compression des objets:  23% (6/26)   Compression des objets:  26% (7/26)   Compression des objets:  30% (8/26)   Compression des objets:  34% (9/26)   Compression des objets:  38% (10/26)   Compression des objets:  42% (11/26)   Compression des objets:  46% (12/26)   Compression des objets:  50% (13/26)   Compression des objets:  53% (14/26)   Compression des objets:  57% (15/26)   Compression des objets:  61% (16/26)   Compression des objets:  65% (17/26)   Compression des objets:  69% (18/26)   Compression des objets:  73% (19/26)   Compression des objets:  76% (20/26)   Compression des objets:  80% (21/26)   Compression des objets:  84% (22/26)   Compression des objets:  88% (23/26)   Compression des objets:  92% (24/26)   Compression des objets:  96% (25/26)   Compression des objets: 100% (26/26)   Compression des objets: 100% (26/26), fait.
+Écriture des objets:   3% (1/27)   Écriture des objets:   7% (2/27)   Écriture des objets:  11% (3/27)   Écriture des objets:  14% (4/27)   Écriture des objets:  18% (5/27)   Écriture des objets:  22% (6/27)   Écriture des objets:  25% (7/27)   Écriture des objets:  29% (8/27)   Écriture des objets:  33% (9/27)   Écriture des objets:  37% (10/27)   Écriture des objets:  40% (11/27)   Écriture des objets:  44% (12/27)   Écriture des objets:  51% (14/27)   Écriture des objets:  55% (15/27)   Écriture des objets:  59% (16/27)   Écriture des objets:  62% (17/27)   Écriture des objets:  66% (18/27)   Écriture des objets:  70% (19/27)   Écriture des objets:  74% (20/27)   Écriture des objets:  77% (21/27)   Écriture des objets:  81% (22/27)   Écriture des objets:  85% (23/27)   Écriture des objets:  88% (24/27)   Écriture des objets:  92% (25/27)   Écriture des objets:  96% (26/27)   Écriture des objets: 100% (27/27)   Écriture des objets: 100% (27/27), 4.03 KiB | 1.34 MiB/s, fait.
+Total 27 (delta 18), réutilisés 0 (delta 0)
+remote: Resolving deltas:   0% (0/18)[Kremote: Resolving deltas:   5% (1/18)[Kremote: Resolving deltas:  11% (2/18)[Kremote: Resolving deltas:  16% (3/18)[Kremote: Resolving deltas:  22% (4/18)[Kremote: Resolving deltas:  27% (5/18)[Kremote: Resolving deltas:  33% (6/18)[Kremote: Resolving deltas:  38% (7/18)[Kremote: Resolving deltas:  44% (8/18)[Kremote: Resolving deltas:  50% (9/18)[Kremote: Resolving deltas:  55% (10/18)[Kremote: Resolving deltas:  61% (11/18)[Kremote: Resolving deltas:  66% (12/18)[Kremote: Resolving deltas:  72% (13/18)[Kremote: Resolving deltas:  77% (14/18)[Kremote: Resolving deltas:  83% (15/18)[Kremote: Resolving deltas:  88% (16/18)[Kremote: Resolving deltas:  94% (17/18)[Kremote: Resolving deltas: 100% (18/18)[Kremote: Resolving deltas: 100% (18/18), completed with 15 local objects.[K
+To https://github.com/skergoat/philo-project.git
+   225b164..cffb5fd  main -> main
+bash-3.2$ git status 
+Sur la branche main
+Modifications qui ne seront pas validées :
+  (utilisez "git add <fichier>..." pour mettre à jour ce qui sera validé)
+  (utilisez "git checkout -- <fichier>..." pour annuler les modifications dans la copie de travail)
+
+	[31mmodifié :         cache:clear[m
+	[31mmodifié :         src/Form/Lessons/LessonType.php[m
+	[31mmodifié :         templates/admin/cours/edit.html.twig[m
+	[31mmodifié :         templates/admin/lesson/_form.html.twig[m
+	[31mmodifié :         templates/home/lesson.html.twig[m
+
+aucune modification n'a été ajoutée à la validation (utilisez "git add" ou "git commit -a")
+bash-3.2$ git commit -am ''m'o'r'e' 'l'e's's'

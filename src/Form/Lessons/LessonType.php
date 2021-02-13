@@ -19,7 +19,7 @@ class LessonType extends AbstractType
             ])
             ->add('title', TextType::class)
             ->add('content', TextareaType::class)
-            // ->add('order_id', TextType::class)
+            ->add('order_id', TextType::class)
             // ->add('completed')
             // ->add('Cours')
         ;

@@ -35,7 +35,7 @@
             <tbody>
             {% for lesson in lessons %}
                 <tr>
-                    <td>{{ lesson.title }}</td>
+                    <td>{{ lesson.orderId }}. {{ lesson.title }}</td>
                     <td>{{ lesson.content[0:50]|raw  }}...</td>
                     <td>
                         <a href="{{ path('lesson_edit', {'id': lesson.id}) }}" class="btn btn-warning" title="Modifier"><i class="far fa-edit"></i></a>

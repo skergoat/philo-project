@@ -25,22 +25,20 @@ class LessonController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/{order}", name="lesson_show", methods={"GET"})
+     * @Route("/{slug}/{order}", name="lesson_show", methods={"GET"})
      */
-    public function show(LessonRepository $repository, $id, $order, CoursRepository $coursRepository): Response
+    public function show(LessonRepository $repository, $slug, $order, CoursRepository $coursRepository): Response
     {   
+        // get current cours id 
+        $cours = $coursRepository->findOneBy(['slug' => $slug]);
+        $id = $cours->getId();
         // get current lesson 
-        $lesson = $repository->findOneBy(['order_id' => $order]); 
-        // get current lesson cours_id
-        $coursId = $lesson->getCours()->getId();
-        dd($coursId);
+        $lesson = $repository->findOneBy(['order_id' => $order, 'Cours' => $cours]); 
         // get lessons before and after 
         $idBefore =  $order - 1; 
         $idAfter =  $order + 1; 
         $before = $repository->findOneBy(['order_id' => $idBefore]);
         $after = $repository->findOneBy(['order_id' => $idAfter]);
-        // get parent cours 
-        $cours = $coursRepository->findOneBy(['id' => $coursId]);
         // get child lessons 
         $lessons = $cours->getLessons();
 
@@ -48,7 +46,8 @@ class LessonController extends AbstractController
             'lesson' => $lesson,
             'lessons' => $lessons,
             'before' => $before,
-            'after' => $after
+            'after' => $after,
+            'slug' => $slug
             ]
         );
     }

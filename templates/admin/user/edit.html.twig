@@ -3,8 +3,10 @@
 {% block title %}Edit User{% endblock %}
 
 {% block body %}
-    <div class="col m-3 d-flex">
-        <a href="{{ path('user_index') }}" class="btn btn-warning d-block">Menu Utilisateurs</a>
+    <div class="col m-3 d-flex justify-content-between">
+        <div>
+            <a href="{{ path('user_index') }}" class="btn btn-warning d-block">Menu Utilisateurs</a>
+        </div>
         {{ include('admin/user/_delete_form.html.twig') }}
     </div>
     <h1 class="text-centered mt-5 mb-4">Modifier les Logins</h1>

@@ -15,6 +15,11 @@
 	</div>
 	<div class="content">
 		<div class="container">
+			{% if is_granted("ROLE_ADMIN") %}
+			<div class="col m-3 d-flex">
+				<a href="{{ path('cours_edit', {id:lesson.cours.id}) }}" class="btn btn-warning d-block">Menu des Leçons</a>
+			</div>
+			{% endif %}
 			<div class="mb-5 row">
 				{% if lesson.orderId == 1 %}
 				<div class="col-6 d-flex justify-content-start">
@@ -23,12 +28,12 @@
 				{% endif %}
 				{% if before.orderId is defined %}
 				<div class="{% if after.orderId is defined %}col-6{% else %}col-12{% endif %} d-flex justify-content-start">
-					<a href="{{ path('lesson_show', {id:before.orderId}) }}" type="button" class="btn btn-secondary"><i class="fas fa-chevron-left"></i> {{ before.title }}</a>
+					<a href="{{ path('lesson_show', {slug: slug, order:before.orderId}) }}" type="button" class="btn btn-secondary"><i class="fas fa-chevron-left"></i> {{ before.title }}</a>
 				</div>
 				{% endif %}
 				{% if after.orderId is defined %}
 				<div class="col-6 d-flex justify-content-end">
-					<a href="{{ path('lesson_show', {id:after.orderId}) }}" type="button" class="d-block btn btn-secondary">{{ after.title }} <i class="fas fa-chevron-right"></i></a>
+					<a href="{{ path('lesson_show', {slug: slug, order:after.orderId}) }}" type="button" class="d-block btn btn-secondary">{{ after.title }} <i class="fas fa-chevron-right"></i></a>
 				</div>
 				{% endif %}
 			</div>
@@ -66,7 +71,7 @@
 					<h2 class="mb-4">Sommaire</h2>
 					<p class="mb-3"><a href="{{ path('show_cours', {id:lesson.cours.id}) }}" type="button" class="sidebar-p"> Introduction </a></p>
 					{% for lessons in lessons %}
-					<p class="mb-3"><a href="{{ path('lesson_show', {id:lessons.orderId}) }}" class="sidebar-p {% if lessons.completed == true %} completed {% endif %}">{{ lessons.title }}</a></p>
+					<p class="mb-3"><a href="{{ path('lesson_show', {slug: slug, order:after.orderId}) }}" class="sidebar-p {% if lessons.completed == true %} completed {% endif %}">{{ lessons.title }}</a></p>
 					{% endfor %}
 				</div>
 			</aside>

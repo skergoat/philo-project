@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Form;
+namespace App\Form\Cours;
 
 use App\Entity\Cours;
-use App\Form\CoursCardsImageFormType;
+use App\Form\Cours\CoursCardsImageFormType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;

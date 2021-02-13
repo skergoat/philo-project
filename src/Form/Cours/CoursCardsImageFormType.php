@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Form;
+namespace App\Form\Cours;
 
 use App\Entity\CoursCardsImage;
 use Symfony\Component\Form\AbstractType;
@@ -15,6 +15,7 @@ class CoursCardsImageFormType extends AbstractType
         $builder
             ->add('file', FileType::class, [
                 'mapped' => false,
+                'required' => false // provisoire 
             ]);
 
         ;

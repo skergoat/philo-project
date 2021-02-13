@@ -3,7 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Lesson;
-use App\Form\LessonType;
+use App\Form\Lessons\LessonType;
 use App\Repository\LessonRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -38,7 +38,6 @@ class LessonController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-    
     /**
      * @Route("/{id}/edit", name="lesson_edit", methods={"GET","POST"})
      */
@@ -50,7 +49,8 @@ class LessonController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('lesson_index');
+            $this->addFlash('success', 'Leçon Modifiée !');
+            return $this->redirectToRoute('lesson_edit', ['id' => $form->getData()->getId()]);
         }
 
         return $this->render('admin/lesson/edit.html.twig', [

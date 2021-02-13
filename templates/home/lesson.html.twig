@@ -17,7 +17,7 @@
 		<div class="container">
 			{% if is_granted("ROLE_ADMIN") %}
 			<div class="col m-3 d-flex">
-				<a href="{{ path('cours_edit', {id:lesson.cours.id}) }}" class="btn btn-warning d-block">Menu des Leçons</a>
+				<a href="{{ path('lesson_edit', {'id': lesson.id}) }}" class="btn btn-warning d-block">Modifier</a>
 			</div>
 			{% endif %}
 			<div class="mb-5 row">

@@ -511,4 +511,47 @@ bash-3.2$ symfony console make:migratiomn[K[Kn
 
  The database schema and the application mapping information are already in sync.
  
+bash-3.2$ git status 
+Sur la branche main
+Modifications qui ne seront pas validées :
+  (utilisez "git add <fichier>..." pour mettre à jour ce qui sera validé)
+  (utilisez "git checkout -- <fichier>..." pour annuler les modifications dans la copie de travail)
+
+	[31mmodifié :         cache:clear[m
+	[31mmodifié :         src/Controller/Front/LessonController.php[m
+	[31mmodifié :         templates/admin.html.twig[m
+	[31mmodifié :         templates/admin/cours/_delete_form.html.twig[m
+	[31mmodifié :         templates/admin/cours/edit.html.twig[m
+	[31mmodifié :         templates/admin/cours/index.html.twig[m
+	[31mmodifié :         templates/admin/lesson/_delete_form.html.twig[m
+	[31mmodifié :         templates/admin/user/_delete_form.html.twig[m
+	[31mmodifié :         templates/admin/user/edit.html.twig[m
+	[31mmodifié :         templates/admin/user/index.html.twig[m
+	[31mmodifié :         templates/home/cours.html.twig[m
+	[31mmodifié :         templates/home/lesson.html.twig[m
+
+aucune modification n'a été ajoutée à la validation (utilisez "git add" ou "git commit -a")
+bash-3.2$ git commit -am ''m'[1P'n'a'v' 'a'd'm'i'n'
+[main 225b164] nav admin
+ 12 files changed, 87 insertions(+), 36 deletions(-)
+bash-3.2$ git push origin main
+Énumération des objets: 41, fait.
+Décompte des objets:   2% (1/41)   Décompte des objets:   4% (2/41)   Décompte des objets:   7% (3/41)   Décompte des objets:   9% (4/41)   Décompte des objets:  12% (5/41)   Décompte des objets:  14% (6/41)   Décompte des objets:  17% (7/41)   Décompte des objets:  19% (8/41)   Décompte des objets:  21% (9/41)   Décompte des objets:  24% (10/41)   Décompte des objets:  26% (11/41)   Décompte des objets:  29% (12/41)   Décompte des objets:  31% (13/41)   Décompte des objets:  34% (14/41)   Décompte des objets:  36% (15/41)   Décompte des objets:  39% (16/41)   Décompte des objets:  41% (17/41)   Décompte des objets:  43% (18/41)   Décompte des objets:  46% (19/41)   Décompte des objets:  48% (20/41)   Décompte des objets:  51% (21/41)   Décompte des objets:  53% (22/41)   Décompte des objets:  56% (23/41)   Décompte des objets:  58% (24/41)   Décompte des objets:  60% (25/41)   Décompte des objets:  63% (26/41)   Décompte des objets:  65% (27/41)   Décompte des objets:  68% (28/41)   Décompte des objets:  70% (29/41)   Décompte des objets:  73% (30/41)   Décompte des objets:  75% (31/41)   Décompte des objets:  78% (32/41)   Décompte des objets:  80% (33/41)   Décompte des objets:  82% (34/41)   Décompte des objets:  85% (35/41)   Décompte des objets:  87% (36/41)   Décompte des objets:  90% (37/41)   Décompte des objets:  92% (38/41)   Décompte des objets:  95% (39/41)   Décompte des objets:  97% (40/41)   Décompte des objets: 100% (41/41)   Décompte des objets: 100% (41/41), fait.
+Compression par delta en utilisant jusqu'à 4 fils d'exécution
+Compression des objets:   4% (1/23)   Compression des objets:   8% (2/23)   Compression des objets:  13% (3/23)   Compression des objets:  17% (4/23)   Compression des objets:  21% (5/23)   Compression des objets:  26% (6/23)   Compression des objets:  30% (7/23)   Compression des objets:  34% (8/23)   Compression des objets:  39% (9/23)   Compression des objets:  43% (10/23)   Compression des objets:  47% (11/23)   Compression des objets:  52% (12/23)   Compression des objets:  56% (13/23)   Compression des objets:  60% (14/23)   Compression des objets:  65% (15/23)   Compression des objets:  69% (16/23)   Compression des objets:  73% (17/23)   Compression des objets:  78% (18/23)   Compression des objets:  82% (19/23)   Compression des objets:  86% (20/23)   Compression des objets:  91% (21/23)   Compression des objets:  95% (22/23)   Compression des objets: 100% (23/23)   Compression des objets: 100% (23/23), fait.
+Écriture des objets:   4% (1/23)   Écriture des objets:   8% (2/23)   Écriture des objets:  13% (3/23)   Écriture des objets:  17% (4/23)   Écriture des objets:  21% (5/23)   Écriture des objets:  26% (6/23)   Écriture des objets:  30% (7/23)   Écriture des objets:  34% (8/23)   Écriture des objets:  39% (9/23)   Écriture des objets:  43% (10/23)   Écriture des objets:  47% (11/23)   Écriture des objets:  52% (12/23)   Écriture des objets:  56% (13/23)   Écriture des objets:  60% (14/23)   Écriture des objets:  65% (15/23)   Écriture des objets:  69% (16/23)   Écriture des objets:  73% (17/23)   Écriture des objets:  78% (18/23)   Écriture des objets:  82% (19/23)   Écriture des objets:  86% (20/23)   Écriture des objets:  91% (21/23)   Écriture des objets:  95% (22/23)   Écriture des objets: 100% (23/23)   Écriture des objets: 100% (23/23), 4.80 KiB | 1.20 MiB/s, fait.
+Total 23 (delta 18), réutilisés 0 (delta 0)
+remote: Resolving deltas:   0% (0/18)[Kremote: Resolving deltas:   5% (1/18)[Kremote: Resolving deltas:  11% (2/18)[Kremote: Resolving deltas:  16% (3/18)[Kremote: Resolving deltas:  22% (4/18)[Kremote: Resolving deltas:  27% (5/18)[Kremote: Resolving deltas:  33% (6/18)[Kremote: Resolving deltas:  38% (7/18)[Kremote: Resolving deltas:  44% (8/18)[Kremote: Resolving deltas:  50% (9/18)[Kremote: Resolving deltas:  55% (10/18)[Kremote: Resolving deltas:  61% (11/18)[Kremote: Resolving deltas:  66% (12/18)[Kremote: Resolving deltas:  72% (13/18)[Kremote: Resolving deltas:  77% (14/18)[Kremote: Resolving deltas:  83% (15/18)[Kremote: Resolving deltas:  88% (16/18)[Kremote: Resolving deltas:  94% (17/18)[Kremote: Resolving deltas: 100% (18/18)[Kremote: Resolving deltas: 100% (18/18), completed with 15 local objects.[K
+To https://github.com/skergoat/philo-project.git
+   cb63271..225b164  main -> main
+bash-3.2$ symfony console doctrine:fixtures:load 
+y
+
+ [32mCareful, database "philo" will be purged. Do you want to continue? (yes/no)[39m [[33mno[39m]:
+ > 
+   [33m>[39m [32mpurging database[39m
+   [33m>[39m [32mloading App\DataFixtures\AppFixtures[39m
+   [33m>[39m [32mloading App\DataFixtures\CoursFixtures[39m
+   [33m>[39m [32mloading App\DataFixtures\LessonFixtures[39m
+   [33m>[39m [32mloading App\DataFixtures\UserFixture[39m
 bash-3.2$ 

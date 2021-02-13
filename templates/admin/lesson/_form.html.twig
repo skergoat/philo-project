@@ -1,4 +1,36 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <div class="col-lg-6 form-group">
+        {{ form_label(form.title, 'Titre') }}
+        {% if form.title.vars.errors | length == 0 %}
+        {{ form_widget(form.title, {'label': 'Titre', 'attr' : { class: 'form-control' }} ) }}
+        {% else %}
+        {{ form_widget(form.title, {'label': 'Titre', 'attr' : { class: 'form-control is-invalid' }} ) }}
+        {% endif %}
+        <div class="form-error">
+            {{ form_errors(form.title) }}
+        </div>
+    </div><br>
+    <div class="col-lg-6 form-group">
+        {{ form_label(form.video, 'Vidéo') }}
+        {% if form.video.vars.errors | length == 0 %}
+        {{ form_widget(form.video, {'label': 'Vidéo', 'attr' : { class: 'form-control' }} ) }}
+        {% else %}
+        {{ form_widget(form.video, {'label': 'Vidéo', 'attr' : { class: 'form-control is-invalid' }} ) }}
+        {% endif %}
+        <div class="form-error">
+            {{ form_errors(form.video) }}
+        </div>
+    </div><br>
+    <div class="col-lg-6 form-group">
+        {{ form_label(form.content, 'Contenu') }}
+        {% if form.content.vars.errors | length == 0 %}
+        {{ form_widget(form.content, {'label': 'Contenu', 'attr' : { class: 'form-control', 'rows':'10' }} ) }}
+        {% else %}
+        {{ form_widget(form.content, {'label': 'Contenu', 'attr' : { class: 'form-control is-invalid' }} ) }}
+        {% endif %}
+        <div class="form-error">
+            {{ form_errors(form.content) }}
+        </div>
+    </div><br>
+    <button class="btn btn-primary btn btn-primary d-block mx-auto w-50">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

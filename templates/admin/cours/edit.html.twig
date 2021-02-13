@@ -15,6 +15,14 @@
     {# title #}
     <h1 class="text-centered mt-5 mb-4">Modifier un Cours</h1>
 
+    <div class="container mb-5">
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+    </div>
+
     {{ include('admin/cours/_form.html.twig', {'button_label': 'Update'}) }}
 
     {# lessons index #}
@@ -23,14 +31,7 @@
         {# pagination #}
         <div clss="d-flex justify-content-center mt-4">{{ knp_pagination_render(lessons) }}</div>
 
-        <table class="table">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
+        <table class="table table-dark">
             <tbody>
             {% for lesson in lessons %}
                 <tr>
@@ -38,7 +39,6 @@
                     <td>{{ lesson.content[0:50]|raw  }}...</td>
                     <td>
                         <a href="{{ path('lesson_edit', {'id': lesson.id}) }}" class="btn btn-warning" title="Modifier"><i class="far fa-edit"></i></a>
-                        <a href="{{ path('lesson_show', {slug: cour.slug, order:lesson.orderId}) }}" class="btn btn-secondary" title="Voir"><i class="far fa-eye"></i></a> 
                     </td>
                 </tr>
             {% else %}
@@ -51,4 +51,9 @@
         {# pagination #}
         <div class="d-flex justify-content-center mt-4">{{ knp_pagination_render(lessons) }}</div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script src="{{ asset('/js/myscript.js') }}"></script>
 {% endblock %}

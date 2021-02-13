@@ -3,7 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Cours;
-use App\Form\Cours1Type;
+use App\Form\Cours\Cours1Type;
 use App\Repository\CoursRepository;
 use App\Repository\LessonRepository;
 use Knp\Component\Pager\PaginatorInterface;
@@ -72,7 +72,8 @@ class CoursController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('cours_index');
+            $this->addFlash('success', 'Cours Modifié !');
+            return $this->redirectToRoute('cours_edit', ['id' => $form->getData()->getId()]);
         }
         // get lessons 
         $queryBuilder = $cour->getLessons();  

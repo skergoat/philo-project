@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\User;
 use App\Form\User\UserType;
+use App\Service\UserHelper;
 use App\Form\User\UserEditType;
 use App\Repository\UserRepository;
 use App\Form\User\UserPasswordType;
@@ -21,12 +22,6 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
  */
 class UserController extends AbstractController
 {
-    private $passwordEncoder;
-
-    public function __construct(UserPasswordEncoderInterface $passwordEncoder)
-    {
-        $this->passwordEncoder = $passwordEncoder;
-    }
     /**
      * @Route("/", name="user_index", methods={"GET"})
      */
@@ -48,13 +43,19 @@ class UserController extends AbstractController
     /**
      * @Route("/new", name="user_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, UserHelper $userHelper): Response
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $user = $form->getData();
+            // encode pwd
+            $userHelper->encodePassword($form, $user);
+            // edit roles 
+            $userHelper->editRoles($form);
+            // flush
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
@@ -81,7 +82,7 @@ class UserController extends AbstractController
     /**
      * @Route("/{id}/edit", name="user_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, User $user): Response
+    public function edit(Request $request, User $user, UserHelper $userHelper): Response
     {
         // edit logins 
         $form = $this->createForm(UserEditType::class, $user);
@@ -89,32 +90,27 @@ class UserController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             // edit roles 
-            if($form['roles']->getData()) {
-                $role[] = $form['roles']->getData();
-                $user = $form->getData();
-                $user->setRoles($role);
-            }
+            $userHelper->editRoles($form);
             // flush 
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('notice', 'Utilisateur Modifié !');
             return $this->redirectToRoute('user_edit', ['id' => $user->getId()]);
         }
+
         // edit password 
         $formPassword = $this->createForm(UserPasswordType::class, $user);
         $formPassword->handleRequest($request);
 
-        if($formPassword->isSubmitted() && $formPassword->isValid() ) {
-            // encode password 
+        if($formPassword->isSubmitted() && $formPassword->isValid() ) { 
+            // encode pwd
             $user = $formPassword->getData();
-            $user->setPassword($this->passwordEncoder->encodePassword(
-                $user,
-                $formPassword->getData()->getPassword()
-            ));
+            $userHelper->encodePassword($formPassword, $user);
             // flush 
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('notice-mdp', 'Mot de passe Modifié !');
             return $this->redirectToRoute('user_edit', ['id' => $user->getId()]);
-        }
+        }   
+
         // render template 
         return $this->render('admin/user/edit.html.twig', [
             'user' => $user,

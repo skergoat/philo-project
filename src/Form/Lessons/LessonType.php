@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class LessonType extends AbstractType
@@ -19,7 +20,7 @@ class LessonType extends AbstractType
             ])
             ->add('title', TextType::class)
             ->add('content', TextareaType::class)
-            ->add('order_id', TextType::class)
+            // ->add('order_id', NumberType::class) // validation pour max ? 
             // ->add('completed')
             // ->add('Cours')
         ;

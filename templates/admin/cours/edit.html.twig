@@ -10,9 +10,12 @@
 {% block body %}
     <div class="col m-3 d-flex">
         <a href="{{ path('cours_index') }}" class="btn btn-warning d-block">Menu des Cours</a>
-        {{ include('cours/_delete_form.html.twig') }}
+        {{ include('admin/cours/_delete_form.html.twig') }}
     </div>
     <h1 class="text-centered mt-5 mb-4">Modifier un Cours</h1>
 
-    {{ include('cours/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('admin/cours/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <h1 class="text-centered mt-5 mb-4">Leçons associées</h1>
+    
 {% endblock %}

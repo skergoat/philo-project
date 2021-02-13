@@ -728,4 +728,28 @@ Total 10 (delta 6), réutilisés 0 (delta 0)
 remote: Resolving deltas:   0% (0/6)[Kremote: Resolving deltas:  16% (1/6)[Kremote: Resolving deltas:  33% (2/6)[Kremote: Resolving deltas:  50% (3/6)[Kremote: Resolving deltas:  66% (4/6)[Kremote: Resolving deltas:  83% (5/6)[Kremote: Resolving deltas: 100% (6/6)[Kremote: Resolving deltas: 100% (6/6), completed with 6 local objects.[K
 To https://github.com/skergoat/philo-project.git
    f6fd431..09c7d6f  main -> main
+bash-3.2$ git status 
+Sur la branche main
+Modifications qui ne seront pas validées :
+  (utilisez "git add <fichier>..." pour mettre à jour ce qui sera validé)
+  (utilisez "git checkout -- <fichier>..." pour annuler les modifications dans la copie de travail)
+
+	[31mmodifié :         cache:clear[m
+	[31mmodifié :         src/Controller/Admin/LessonController.php[m
+	[31mmodifié :         templates/admin/cours/edit.html.twig[m
+
+aucune modification n'a été ajoutée à la validation (utilisez "git add" ou "git commit -a")
+bash-3.2$ git commit -am ''u'p'
+[main 82dfa03] up
+ 3 files changed, 102 insertions(+), 9 deletions(-)
+bash-3.2$ git push origin main
+Énumération des objets: 21, fait.
+Décompte des objets:   4% (1/21)   Décompte des objets:   9% (2/21)   Décompte des objets:  14% (3/21)   Décompte des objets:  19% (4/21)   Décompte des objets:  23% (5/21)   Décompte des objets:  28% (6/21)   Décompte des objets:  33% (7/21)   Décompte des objets:  38% (8/21)   Décompte des objets:  42% (9/21)   Décompte des objets:  47% (10/21)   Décompte des objets:  52% (11/21)   Décompte des objets:  57% (12/21)   Décompte des objets:  61% (13/21)   Décompte des objets:  66% (14/21)   Décompte des objets:  71% (15/21)   Décompte des objets:  76% (16/21)   Décompte des objets:  80% (17/21)   Décompte des objets:  85% (18/21)   Décompte des objets:  90% (19/21)   Décompte des objets:  95% (20/21)   Décompte des objets: 100% (21/21)   Décompte des objets: 100% (21/21), fait.
+Compression par delta en utilisant jusqu'à 4 fils d'exécution
+Compression des objets:   9% (1/11)   Compression des objets:  18% (2/11)   Compression des objets:  27% (3/11)   Compression des objets:  36% (4/11)   Compression des objets:  45% (5/11)   Compression des objets:  54% (6/11)   Compression des objets:  63% (7/11)   Compression des objets:  72% (8/11)   Compression des objets:  81% (9/11)   Compression des objets:  90% (10/11)   Compression des objets: 100% (11/11)   Compression des objets: 100% (11/11), fait.
+Écriture des objets:   9% (1/11)   Écriture des objets:  18% (2/11)   Écriture des objets:  27% (3/11)   Écriture des objets:  36% (4/11)   Écriture des objets:  45% (5/11)   Écriture des objets:  54% (6/11)   Écriture des objets:  63% (7/11)   Écriture des objets:  72% (8/11)   Écriture des objets:  81% (9/11)   Écriture des objets:  90% (10/11)   Écriture des objets: 100% (11/11)   Écriture des objets: 100% (11/11), 2.29 KiB | 2.29 MiB/s, fait.
+Total 11 (delta 8), réutilisés 0 (delta 0)
+remote: Resolving deltas:   0% (0/8)[Kremote: Resolving deltas:  12% (1/8)[Kremote: Resolving deltas:  25% (2/8)[Kremote: Resolving deltas:  37% (3/8)[Kremote: Resolving deltas:  50% (4/8)[Kremote: Resolving deltas:  62% (5/8)[Kremote: Resolving deltas:  75% (6/8)[Kremote: Resolving deltas:  87% (7/8)[Kremote: Resolving deltas: 100% (8/8)[Kremote: Resolving deltas: 100% (8/8), completed with 8 local objects.[K
+To https://github.com/skergoat/philo-project.git
+   09c7d6f..82dfa03  main -> main
 bash-3.2$ 

@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Cours;
 use App\Form\Cours1Type;
 use App\Repository\CoursRepository;
+use App\Repository\LessonRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -58,22 +59,13 @@ class CoursController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-
-    // /**
-    //  * @Route("/{id}", name="cours_show", methods={"GET"})
-    //  */
-    // public function show(Cours $cour): Response
-    // {
-    //     return $this->render('cours/show.html.twig', [
-    //         'cour' => $cour,
-    //     ]);
-    // }
-
+    
     /**
      * @Route("/{id}/edit", name="cours_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Cours $cour): Response
+    public function edit(Request $request, Cours $cour, PaginatorInterface $paginator): Response
     {
+        // edit cours
         $form = $this->createForm(Cours1Type::class, $cour);
         $form->handleRequest($request);
 
@@ -82,10 +74,19 @@ class CoursController extends AbstractController
 
             return $this->redirectToRoute('cours_index');
         }
-
+        // get lessons 
+        $queryBuilder = $cour->getLessons();  
+    
+        $pagination = $paginator->paginate(
+            $queryBuilder, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            10/*limit per page*/
+        );
+    
         return $this->render('admin/cours/edit.html.twig', [
             'cour' => $cour,
             'form' => $form->createView(),
+            'lessons' => $pagination // lessons 
         ]);
     }
 

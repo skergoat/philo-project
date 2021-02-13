@@ -15,15 +15,6 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class LessonController extends AbstractController
 {
-    /**
-     * @Route("/", name="lesson_index", methods={"GET"})
-     */
-    public function index(LessonRepository $lessonRepository): Response
-    {
-        return $this->render('admin/lesson/index.html.twig', [
-            'lessons' => $lessonRepository->findAll(),
-        ]);
-    }
 
     /**
      * @Route("/new", name="lesson_new", methods={"GET","POST"})

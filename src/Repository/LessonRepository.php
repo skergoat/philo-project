@@ -32,29 +32,27 @@ class LessonRepository extends ServiceEntityRepository
     // /**
     //  * @return Lesson[] Returns an array of Lesson objects
     //  */
-    /*
-    public function findByExampleField($value)
+   
+    // public function findByExampleField($value)
+    // {
+    //     return $this->createQueryBuilder('l')
+    //         ->andWhere('l.exampleField = :val')
+    //         ->setParameter('val', $value)
+    //         ->orderBy('l.id', 'ASC')
+    //         ->setMaxResults(10)
+    //         ->getQuery()
+    //         ->getResult()
+    //     ;
+    // }
+ 
+    public function getLessonByCoursLength($id)
     {
         return $this->createQueryBuilder('l')
-            ->andWhere('l.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('l.id', 'ASC')
-            ->setMaxResults(10)
+            ->select('count(l.order_id)')
+            ->andWhere('l.Cours ='.$id)
             ->getQuery()
-            ->getResult()
+            ->getSingleScalarResult();
         ;
     }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?Lesson
-    {
-        return $this->createQueryBuilder('l')
-            ->andWhere('l.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

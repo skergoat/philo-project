@@ -752,4 +752,30 @@ Total 11 (delta 8), réutilisés 0 (delta 0)
 remote: Resolving deltas:   0% (0/8)[Kremote: Resolving deltas:  12% (1/8)[Kremote: Resolving deltas:  25% (2/8)[Kremote: Resolving deltas:  37% (3/8)[Kremote: Resolving deltas:  50% (4/8)[Kremote: Resolving deltas:  62% (5/8)[Kremote: Resolving deltas:  75% (6/8)[Kremote: Resolving deltas:  87% (7/8)[Kremote: Resolving deltas: 100% (8/8)[Kremote: Resolving deltas: 100% (8/8), completed with 8 local objects.[K
 To https://github.com/skergoat/philo-project.git
    09c7d6f..82dfa03  main -> main
+bash-3.2$ git status 
+Sur la branche main
+Modifications qui ne seront pas validées :
+  (utilisez "git add <fichier>..." pour mettre à jour ce qui sera validé)
+  (utilisez "git checkout -- <fichier>..." pour annuler les modifications dans la copie de travail)
+
+	[31mmodifié :         cache:clear[m
+	[31mmodifié :         src/Controller/Admin/LessonController.php[m
+
+aucune modification n'a été ajoutée à la validation (utilisez "git add" ou "git commit -a")
+bash-3.2$ git commit -am ''d'i'o'w'n'[1P'[1P'[1P'[1P'o'w'n'
+[main 113e8f4] down
+ 2 files changed, 43 insertions(+), 15 deletions(-)
+bash-3.2$ git push origin main]
+error: le spécificateur de référence source main] ne correspond à aucune référence
+[31merror: impossible de pousser des références vers 'https://github.com/skergoat/philo-project.git'
+[mbash-3.2$ git poush [K[K[K[K[Kush origin main
+Énumération des objets: 13, fait.
+Décompte des objets:   7% (1/13)   Décompte des objets:  15% (2/13)   Décompte des objets:  23% (3/13)   Décompte des objets:  30% (4/13)   Décompte des objets:  38% (5/13)   Décompte des objets:  46% (6/13)   Décompte des objets:  53% (7/13)   Décompte des objets:  61% (8/13)   Décompte des objets:  69% (9/13)   Décompte des objets:  76% (10/13)   Décompte des objets:  84% (11/13)   Décompte des objets:  92% (12/13)   Décompte des objets: 100% (13/13)   Décompte des objets: 100% (13/13), fait.
+Compression par delta en utilisant jusqu'à 4 fils d'exécution
+Compression des objets:  14% (1/7)   Compression des objets:  28% (2/7)   Compression des objets:  42% (3/7)   Compression des objets:  57% (4/7)   Compression des objets:  71% (5/7)   Compression des objets:  85% (6/7)   Compression des objets: 100% (7/7)   Compression des objets: 100% (7/7), fait.
+Écriture des objets:  14% (1/7)   Écriture des objets:  28% (2/7)   Écriture des objets:  42% (3/7)   Écriture des objets:  57% (4/7)   Écriture des objets:  71% (5/7)   Écriture des objets:  85% (6/7)   Écriture des objets: 100% (7/7)   Écriture des objets: 100% (7/7), 1.20 KiB | 1.20 MiB/s, fait.
+Total 7 (delta 5), réutilisés 0 (delta 0)
+remote: Resolving deltas:   0% (0/5)[Kremote: Resolving deltas:  20% (1/5)[Kremote: Resolving deltas:  40% (2/5)[Kremote: Resolving deltas:  60% (3/5)[Kremote: Resolving deltas:  80% (4/5)[Kremote: Resolving deltas: 100% (5/5)[Kremote: Resolving deltas: 100% (5/5), completed with 5 local objects.[K
+To https://github.com/skergoat/philo-project.git
+   82dfa03..113e8f4  main -> main
 bash-3.2$ 

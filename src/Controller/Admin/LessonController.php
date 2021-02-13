@@ -102,7 +102,7 @@ class LessonController extends AbstractController
             // get request 
             $order = $request->get('orderId');
 
-            // if($order > 0) {
+            if($order < $lessonRepository->getLessonByCoursLength($coursId)) {
                 // change order item before 
                 $before = $lessonRepository->findOneBy(['order_id' => $order]);
                 $before->setOrderId($order - 1);
@@ -110,11 +110,11 @@ class LessonController extends AbstractController
                 $lesson->setOrderId($order);
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->flush();
-            // }
-            // else {
-            //     $this->addFlash('error', 'Limite atteinte !');
-            //     return $this->redirectToRoute('cours_edit', ['id' => $coursId]);
-            // }
+            }
+            else {
+                $this->addFlash('error', 'Limite atteinte !');
+                return $this->redirectToRoute('cours_edit', ['id' => $coursId]);
+            }
         }
         return $this->redirectToRoute('cours_edit', ['id' => $coursId]);
     }

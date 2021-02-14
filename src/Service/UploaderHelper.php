@@ -13,6 +13,11 @@ class UploaderHelper
         $this->uploadsPath = $uploadsPath;
     }
 
+    public function getPublicPath(string $path): string
+    {
+        return '/uploads/'.$path;
+    }
+
     public function uploadArticleImage(UploadedFile $uploadedFile): string
     {
         $destination =  $this->uploadsPath;

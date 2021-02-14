@@ -13,6 +13,7 @@
     <div class="divider"></div>
     {# content  #}
         <div class="container">
+            <img src="{{ uploaded_asset(cour.mainImage.src) }}" alt="{{ cour.mainImage.alt }}" style="display:block;margin:auto;"/>
             <h1 class="text-centered mb-3">{{ cour.titre }}</h1>
         {% if is_granted("ROLE_ADMIN") %}
 			<div class="col m-3 d-flex">

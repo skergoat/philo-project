@@ -4,12 +4,15 @@ namespace App\Controller\Admin;
 
 use App\Entity\Cours;
 use App\Form\Cours\Cours1Type;
+use App\Entity\CoursCardsImage;
+use Gedmo\Sluggable\Util\Urlizer;
 use App\Repository\CoursRepository;
 use App\Repository\LessonRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -59,6 +62,21 @@ class CoursController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+    /**
+     * @Route("/upload/test", name="upload_test")
+     */
+    // public function temporaryUploadAction(Request $request)
+    // {
+    //     $uploadedFile = $request->files->get('image');
+    //     $destination = $this->getParameter('kernel.project_dir').'/public/uploads';
+    //     $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+    //     $newFilename = Urlizer::urlize($originalFilename).'-'.uniqid().'.'.$uploadedFile->guessExtension();
+    //     dd($uploadedFile->move(
+    //         $destination,
+    //         $newFilename
+    //     ));
+    // }
     
     /**
      * @Route("/{id}/edit", name="cours_edit", methods={"GET","POST"})
@@ -70,7 +88,32 @@ class CoursController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            // current cours 
+            $cours = $form->getData();
+            // upload 
+            $uploadedFile = $form['mainImage']->getData();
+            $destination = $this->getParameter('kernel.project_dir').'/public/uploads';
+            // image 
+            if ($uploadedFile) {
+                // security 
+                $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $newFilename = Urlizer::urlize($originalFilename).'-'.uniqid().'.'.$uploadedFile->guessExtension();
+                $uploadedFile->move(
+                    $destination,
+                    $newFilename
+                );
+                // dd($destination."/".$newFilename);
+                // save 
+                $image = new CoursCardsImage();
+                $image->setSrc($newFilename);
+                $image->setAlt($newFilename);
+                $cours->setMainImage($image);
+            }
+            // flush 
+            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($cours);
+            $manager->persist($image);
+            $manager->flush();
 
             $this->addFlash('success', 'Cours Modifié !');
             return $this->redirectToRoute('cours_edit', ['id' => $form->getData()->getId()]);

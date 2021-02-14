@@ -16,6 +16,7 @@ $(document).ready(function() {
         return false;
     }
 });
+
 // hide flash message after 5s 
 $(function() {
     let message = $('.alert-success');

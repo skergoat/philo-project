@@ -3,8 +3,10 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Cours;
+use App\Service\SlugHelper;
 use App\Form\Cours\Cours1Type;
 use App\Entity\CoursCardsImage;
+use App\Service\UploaderHelper;
 use Gedmo\Sluggable\Util\Urlizer;
 use App\Repository\CoursRepository;
 use App\Repository\LessonRepository;
@@ -43,13 +45,26 @@ class CoursController extends AbstractController
     /**
      * @Route("/new", name="cours_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, UploaderHelper $uploaderHelper, SlugHelper $slug): Response
     {
         $cour = new Cours();
         $form = $this->createForm(Cours1Type::class, $cour);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $cours = $form->getData();
+            $uploadedFile = $form['mainImage']->getData();
+            if ($uploadedFile) {
+                $newFilename = $uploaderHelper->uploadArticleImage($uploadedFile);
+                // save 
+                $image = new CoursCardsImage();
+                $image->setSrc($newFilename);
+                $image->setAlt($newFilename);
+                $cours->setMainImage($image);
+                //slug 
+                $cours->setSlug($slug->slugify($cours->getTitre()));
+            }
+            // save 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($cour);
             $entityManager->flush();
@@ -62,26 +77,11 @@ class CoursController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-
-    /**
-     * @Route("/upload/test", name="upload_test")
-     */
-    // public function temporaryUploadAction(Request $request)
-    // {
-    //     $uploadedFile = $request->files->get('image');
-    //     $destination = $this->getParameter('kernel.project_dir').'/public/uploads';
-    //     $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
-    //     $newFilename = Urlizer::urlize($originalFilename).'-'.uniqid().'.'.$uploadedFile->guessExtension();
-    //     dd($uploadedFile->move(
-    //         $destination,
-    //         $newFilename
-    //     ));
-    // }
     
     /**
      * @Route("/{id}/edit", name="cours_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Cours $cour, PaginatorInterface $paginator, LessonRepository $lessonRepository): Response
+    public function edit(Request $request, Cours $cour, PaginatorInterface $paginator, LessonRepository $lessonRepository, UploaderHelper $uploaderHelper): Response
     {
         // edit cours
         $form = $this->createForm(Cours1Type::class, $cour);
@@ -92,17 +92,9 @@ class CoursController extends AbstractController
             $cours = $form->getData();
             // upload 
             $uploadedFile = $form['mainImage']->getData();
-            $destination = $this->getParameter('kernel.project_dir').'/public/uploads';
             // image 
             if ($uploadedFile) {
-                // security 
-                $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
-                $newFilename = Urlizer::urlize($originalFilename).'-'.uniqid().'.'.$uploadedFile->guessExtension();
-                $uploadedFile->move(
-                    $destination,
-                    $newFilename
-                );
-                // dd($destination."/".$newFilename);
+                $newFilename = $uploaderHelper->uploadArticleImage($uploadedFile);
                 // save 
                 $image = new CoursCardsImage();
                 $image->setSrc($newFilename);

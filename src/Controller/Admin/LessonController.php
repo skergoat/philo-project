@@ -2,12 +2,15 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Cours;
 use App\Entity\Lesson;
 use App\Form\Lessons\LessonType;
 use App\Repository\LessonRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
@@ -81,13 +84,15 @@ class LessonController extends AbstractController
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->flush();
             }
-            else {
-                $this->addFlash('error', 'Limite atteinte !');
-                return $this->redirectToRoute('cours_edit', ['id' => $coursId]);
+            else { // error message Ajax
+                
             }
         }
-        return $this->redirectToRoute('cours_edit', ['id' => $coursId]);
-        // return new Response('done');
+        return new JsonResponse([
+            [$lesson->getId(), $lesson->getOrderId(),  $lesson->getTitle()], 
+            [$before->getId(), $before->getOrderId(), $before->getTitle()],
+            $lesson->getCours()->getId()
+        ]); // json reponse to ajax
     }
 
      /**
@@ -112,13 +117,34 @@ class LessonController extends AbstractController
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->flush();
             }
-            else {
-                $this->addFlash('error', 'Limite atteinte !');
-                return $this->redirectToRoute('cours_edit', ['id' => $coursId]);
+            else { // error message Ajax
+    
             }
         }
-        return $this->redirectToRoute('cours_edit', ['id' => $coursId]);
-        // return new Response('done');
+        return new JsonResponse([[
+            $lesson->getId(), $lesson->getOrderId(),  $lesson->getTitle()], 
+            [$before->getId(), $before->getOrderId(), $before->getTitle()],
+            $lesson->getCours()->getId()
+        ]); // json reponse to ajax
+    }
+
+    /**
+     * @Route("/{id}/load", name="lesson_load", methods={"GET"})
+     */
+    public function load(Request $request, Cours $cours, LessonRepository $lessonRepository, PaginatorInterface $paginator)
+    {
+        // get lessons order by order_id 
+        $queryBuilder = $lessonRepository->findBy(['Cours' => $cours->getId()], ['order_id' => 'ASC']);
+    
+        $pagination = $paginator->paginate(
+            $queryBuilder, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            10/*limit per page*/
+        );
+    
+        return $this->render('admin/cours/load.html.twig', [
+            'lessons' => $pagination // lessons 
+        ]);
     }
 
     /**

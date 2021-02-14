@@ -1,0 +1,33 @@
+<tbody>
+    {% for lesson in lessons %}
+        <tr>
+            <td id="lesson-title-{{ lesson.id }}">{{ lesson.orderId }}. {{ lesson.title }}</td>
+            <td class="d-flex">
+                
+                <form method="post" class="form-position" id="form-up-{{ lesson.id }}" action="{{ path('lesson_up', {id:lesson.id}) }}">
+                    <input type="hidden" name="orderId" value="{{ lesson.orderId - 1 }}">
+                    <input type="hidden" name="_token" value="{{ csrf_token('edit' ~ lesson.id) }}">
+                    <div>
+                        <button class="btn btn-secondary btn-position" id="up" data-url="up-{{ lesson.id }}" {% if lesson.orderId <= 1 %} disabled {% endif %}><i class="fas fa-sort-up"></i></button>
+                    </div>
+                </form>
+                
+                <form method="post" class="form-position" id="form-down-{{ lesson.id }}" action="{{ path('lesson_down', {id:lesson.id}) }}">
+                    <input type="hidden" name="orderId" value="{{ lesson.orderId + 1 }}">
+                    <input type="hidden" name="_token" value="{{ csrf_token('edit' ~ lesson.id) }}">
+                    <div>
+                        <button class="btn btn-secondary btn-position" id="down" data-url="down-{{ lesson.id }}"  {% if lesson.orderId >= lessons|length %} disabled {% endif %}><i class="fas fa-sort-down"></i></button>
+                    </div>
+                </form>
+                
+            </td>
+            <td>
+                <a href="{{ path('lesson_edit', {'id': lesson.id}) }}" id="link-{{ lesson.id }}" class="btn btn-warning" title="Modifier"><i class="far fa-edit"></i></a>
+            </td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="7">no records found</td>
+        </tr>
+    {% endfor %}
+</tbody>

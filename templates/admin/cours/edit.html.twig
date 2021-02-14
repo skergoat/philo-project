@@ -39,16 +39,14 @@
         {# pagination #}
         <div clss="d-flex justify-content-center mt-4">{{ knp_pagination_render(lessons) }}</div>
 
-        <table class="table table-dark">
+        <table class="table table-dark" id="table-test">
             <tbody>
             {% for lesson in lessons %}
                 <tr>
-                    <td>{{ lesson.orderId }}. {{ lesson.title }}</td>
-                    {# <td>{{ lesson.content[0:50]|raw  }}...</td> #}
+                    <td id="lesson-title-{{ lesson.id }}">{{ lesson.orderId }}. {{ lesson.title }}</td>
                     <td class="d-flex">
                         
                         <form method="post" class="form-position" id="form-up-{{ lesson.id }}" action="{{ path('lesson_up', {id:lesson.id}) }}">
-                            {# <input type="hidden" name="_method" value="POST"> #}
                             <input type="hidden" name="orderId" value="{{ lesson.orderId - 1 }}">
                             <input type="hidden" name="_token" value="{{ csrf_token('edit' ~ lesson.id) }}">
                             <div>
@@ -57,7 +55,6 @@
                         </form>
                         
                         <form method="post" class="form-position" id="form-down-{{ lesson.id }}" action="{{ path('lesson_down', {id:lesson.id}) }}">
-                            {# <input type="hidden" name="_method" value="POST"> #}
                             <input type="hidden" name="orderId" value="{{ lesson.orderId + 1 }}">
                             <input type="hidden" name="_token" value="{{ csrf_token('edit' ~ lesson.id) }}">
                             <div>
@@ -67,7 +64,7 @@
                        
                     </td>
                     <td>
-                        <a href="{{ path('lesson_edit', {'id': lesson.id}) }}" class="btn btn-warning" title="Modifier"><i class="far fa-edit"></i></a>
+                        <a href="{{ path('lesson_edit', {'id': lesson.id}) }}" id="link-{{ lesson.id }}" class="btn btn-warning" title="Modifier"><i class="far fa-edit"></i></a>
                     </td>
                 </tr>
             {% else %}

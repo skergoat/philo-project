@@ -7,8 +7,7 @@
     {# buttons #}
     <div class="col m-3 d-flex justify-content-between">
         <div class="d-flex">
-            <a href="{{ path('cours_edit', {id:lesson.cours.id}) }}" class="btn btn-warning d-block">Cours Parent</a>
-            {# <a href="{{ path('cours_index') }}" class="btn btn-warning d-block">Cours Parent</a> #}
+            <a href="{{ path('cours_edit', {id:lesson.cours.id}) }}" class="btn btn-warning d-block" id="cours-parent">Cours Parent</a>
             <a href="{{ path('lesson_show', {slug: lesson.cours.slug, order:lesson.orderId}) }}" class="btn btn-secondary" title="Voir"><i class="far fa-eye"></i></a> 
         </div>
         {{ include('admin/lesson/_delete_form.html.twig') }}
@@ -28,6 +27,7 @@
 
 {% block javascripts %}
 {{ parent() }}
-<script src="{{ asset('/js/myscript.js') }}"></script>
+<script src="{{ asset('/js/myscript.js') }}"></script>  
+
 {% endblock %}
 

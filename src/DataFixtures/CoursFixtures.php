@@ -38,8 +38,8 @@ class CoursFixtures extends Fixture
             // create image 
             $image = new CoursCardsImage();
             // $imageFilename = $this->fakeUploadImage();
-            $image->setSrc('https://picsum.photos/300');
-            $image->setAlt('lorempicsum');
+            // $image->setSrc('https://picsum.photos/300');
+            $image->setAlt('cours');
             // create course
             $cours = new Cours();
             $cours->setTitre('La conscience');
@@ -48,6 +48,7 @@ class CoursFixtures extends Fixture
             
             $cours->setSlug($this->slughelper->slugify($titre).'_'.rand());
             $cours->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut facilisis pulvinar convallis. Fusce lacinia eros est, quis volutpat nisi bibendum sit amet. Aenean ut ante risus. Aliquam at egestas ex. Nunc non felis a lacus scelerisque viverra. Nulla a interdum ipsum. Donec nec ligula auctor, imperdiet nisl ac, semper mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquam id velit ac pellentesque. Integer sagittis suscipit ultricies. Nulla neque augue, ultrices vitae nunc eget, aliquam dignissim urna. Vivamus scelerisque porta mauris convallis sollicitudin. Praesent ullamcorper neque non lacus ullamcorper, eget finibus tortor posuere.');
+            $cours->setResume('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur sit amet quam eu malesuada. Mauris at mauris nec leo dignissim vulputate vel vitae augue.');
             $cours->setLevel('facile');
             $cours->setDuration('6h');
             $cours->setMainImage($image);

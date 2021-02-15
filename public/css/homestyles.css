@@ -13,6 +13,14 @@
   font-size: 15px;
 }
 
+/*small*/
+.text-muted {
+  font-size: 13px !important;
+  text-align: center;
+  display: block;
+  margin-bottom: 5px;
+}
+
 /*general*/
 .lesson > h1 {
   font-size: 50px !important;

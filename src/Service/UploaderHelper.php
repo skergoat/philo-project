@@ -20,7 +20,7 @@ class UploaderHelper
         $this->requestStackContext = $requestStackContext; // path 
     }
 
-    public function getPublicPath(string $path): string
+    public function getPublicPath(?string $path): string
     {
         // needed if you deploy under a subdirectory
         return $this->requestStackContext

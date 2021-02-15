@@ -56,6 +56,11 @@ class Cours
      */
     private $slug;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $resume;
+
     public function __construct()
     {
         $this->lessons = new ArrayCollection();
@@ -164,6 +169,18 @@ class Cours
     public function setSlug(string $slug): self
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getResume(): ?string
+    {
+        return $this->resume;
+    }
+
+    public function setResume(?string $resume): self
+    {
+        $this->resume = $resume;
 
         return $this;
     }

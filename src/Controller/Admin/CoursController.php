@@ -45,7 +45,7 @@ class CoursController extends AbstractController
     /**
      * @Route("/new", name="cours_new", methods={"GET","POST"})
      */
-    public function new(Request $request, UploaderHelper $uploaderHelper, SlugHelper $slug): Response
+    public function new(Request $request, UploaderHelper $uploaderHelper, SlugHelper $slug, CoursRepository $repository): Response
     {
         $cour = new Cours();
         $form = $this->createForm(Cours1Type::class, $cour);
@@ -69,7 +69,9 @@ class CoursController extends AbstractController
             $entityManager->persist($cour);
             $entityManager->flush();
 
-            return $this->redirectToRoute('cours_index');
+            // $coursSaved = $repository->find();
+            $id = $cour->getId();
+            return $this->redirectToRoute('cours_edit', ['id' => $id]);
         }
 
         return $this->render('admin/cours/new.html.twig', [
@@ -90,6 +92,9 @@ class CoursController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             // current cours 
             $cours = $form->getData();
+            // flush 
+            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($cours);
             // upload 
             $uploadedFile = $form['mainImage']->getData();
             // image 
@@ -100,11 +105,8 @@ class CoursController extends AbstractController
                 $image->setSrc($newFilename);
                 $image->setAlt($newFilename);
                 $cours->setMainImage($image);
+                $manager->persist($image);
             }
-            // flush 
-            $manager = $this->getDoctrine()->getManager();
-            $manager->persist($cours);
-            $manager->persist($image);
             $manager->flush();
 
             $this->addFlash('success', 'Cours Modifié !');

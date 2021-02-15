@@ -5,6 +5,7 @@ namespace App\Form\Cours;
 use App\Entity\Cours;
 use Symfony\Component\Form\AbstractType;
 // use App\Form\Cours\CoursCardsImageFormType;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\Image;
 use Symfony\Component\Validator\Constraints\NotNull;
@@ -24,7 +25,13 @@ class Cours1Type extends AbstractType
             ->add('titre', TextType::class)
             ->add('level', TextType::class)
             ->add('duration', TextType::class)
-            ->add('description', TextareaType::class)
+            ->add('description', CKEditorType::class, [
+                'config' => [
+                    'uiColor' => '#e2e2e2',
+                    'toolbar' => 'full',
+                    'required' => true
+                ],
+            ])
         ;
         $imageConstraints = [
             new Image([

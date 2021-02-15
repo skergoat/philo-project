@@ -4,6 +4,7 @@ namespace App\Form\Lessons;
 
 use App\Entity\Lesson;
 use Symfony\Component\Form\AbstractType;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -19,7 +20,7 @@ class LessonType extends AbstractType
                 'required' => false
             ])
             ->add('title', TextType::class)
-            ->add('content', TextareaType::class)
+            ->add('content', CKEditorType::class)
             // ->add('order_id', NumberType::class) // validation pour max ? 
             // ->add('completed')
             // ->add('Cours')

@@ -29,7 +29,7 @@ class CoursController extends AbstractController
      */
     public function index(Request $request, CoursRepository $coursRepository, PaginatorInterface $paginator): Response
     {
-        $queryBuilder = $coursRepository->findAll();     
+        $queryBuilder = $coursRepository->findByDesc();
 
         $pagination = $paginator->paginate(
             $queryBuilder, /* query NOT result */

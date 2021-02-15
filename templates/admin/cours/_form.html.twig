@@ -1,49 +1,53 @@
 {{ form_start(form) }}
-    <div class="col-lg-6 form-group">
-        {{ form_label(form.titre, 'Titre') }}
-        {% if form.titre.vars.errors | length == 0 %}
-        {{ form_widget(form.titre, {'label': 'Titre', 'attr' : { class: 'form-control' }} ) }}
-        {% else %}
-        {{ form_widget(form.titre, {'label': 'Titre', 'attr' : { class: 'form-control is-invalid' }} ) }}
-        {% endif %}
-        <div class="form-error">
-            {{ form_errors(form.titre) }}
+    <div class="row">
+        <div class="col-lg-6 form-group">
+            {{ form_label(form.titre, 'Titre') }}
+            {% if form.titre.vars.errors | length == 0 %}
+            {{ form_widget(form.titre, {'label': 'Titre', 'attr' : { class: 'form-control' }} ) }}
+            {% else %}
+            {{ form_widget(form.titre, {'label': 'Titre', 'attr' : { class: 'form-control is-invalid' }} ) }}
+            {% endif %}
+            <div class="form-error">
+                {{ form_errors(form.titre) }}
+            </div>
+        </div>
+        <div class="col-lg-6 form-group">
+            {{ form_label(form.duration, 'Durée') }}
+            {% if form.duration.vars.errors | length == 0 %}
+            {{ form_widget(form.duration, {'label': 'Durée', 'attr' : { class: 'form-control' }} ) }}
+            {% else %}
+            {{ form_widget(form.duration, {'label': 'Durée', 'attr' : { class: 'form-control is-invalid' }} ) }}
+            {% endif %}
+            <div class="form-error">
+                {{ form_errors(form.duration) }}
+            </div>
         </div>
     </div><br>
-    <div class="col-lg-6 form-group">
-        {{ form_label(form.level, 'Niveau') }}
-        {% if form.level.vars.errors | length == 0 %}
-        {{ form_widget(form.level, {'label': 'Niveau', 'attr' : { class: 'form-control' }} ) }}
-        {% else %}
-        {{ form_widget(form.level, {'label': 'Niveau', 'attr' : { class: 'form-control is-invalid' }} ) }}
-        {% endif %}
-        <div class="form-error">
-            {{ form_errors(form.level) }}
+    <div class="row">
+        <div class="col-lg-6 form-group">
+            {{ form_label(form.level, 'Niveau') }}
+            {% if form.level.vars.errors | length == 0 %}
+            {{ form_widget(form.level, {'label': 'Niveau', 'attr' : { class: 'form-control' }} ) }}
+            {% else %}
+            {{ form_widget(form.level, {'label': 'Niveau', 'attr' : { class: 'form-control is-invalid' }} ) }}
+            {% endif %}
+            <div class="form-error">
+                {{ form_errors(form.level) }}
+            </div>
+        </div>
+        <div class="col-lg-6 form-group">
+            {{ form_label(form.mainImage, 'Image', {'class':'file-align'}) }}
+            <label class="custom-file-label browse" for="customFileLang" data-url="student_resume_file" id="browse-student_resume_file"></label>
+            {{ form_widget(form.mainImage, {'label': 'Image', 'attr' : { class: 'form-control' }} ) }}
+            <div class="form-error">
+                {{ form_errors(form.mainImage) }}
+            </div> 
         </div>
     </div><br>
-    <div class="col-lg-6 form-group">
-        {{ form_label(form.duration, 'Durée') }}
-        {% if form.duration.vars.errors | length == 0 %}
-        {{ form_widget(form.duration, {'label': 'Durée', 'attr' : { class: 'form-control' }} ) }}
-        {% else %}
-        {{ form_widget(form.duration, {'label': 'Durée', 'attr' : { class: 'form-control is-invalid' }} ) }}
-        {% endif %}
-        <div class="form-error">
-            {{ form_errors(form.duration) }}
-        </div>
-    </div><br>
-    <div class="col-lg-6 form-group">
-        {{ form_label(form.mainImage, 'Image', {'class':'file-align'}) }}
-        <label class="custom-file-label browse" for="customFileLang" data-url="student_resume_file" id="browse-student_resume_file"></label>
-        {{ form_widget(form.mainImage, {'label': 'Image', 'attr' : { class: 'form-control' }} ) }}
-    </div>
-    <div class="form-error">
-        {{ form_errors(form.mainImage) }}
-    </div> <br>
-    <div class="col-lg-6 form-group">
+    <div class="col-lg-12 form-group">
         {{ form_label(form.description, 'Description') }}
         {% if form.description.vars.errors | length == 0 %}
-        {{ form_widget(form.description, {'label': 'Description', 'attr' : { class: 'form-control', rows: '10' }} ) }}
+        {{ form_widget(form.description, {'label': 'Description', 'attr' : { class: 'form-control' }} ) }}
         {% else %}
         {{ form_widget(form.description, {'label': 'Description', 'attr' : { class: 'form-control is-invalid' }} ) }}
         {% endif %}

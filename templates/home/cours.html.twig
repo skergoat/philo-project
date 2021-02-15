@@ -3,6 +3,7 @@
 {% block title %}Cours{% endblock %}
 
 {% block stylesheets %}
+<script src="https://kit.fontawesome.com/1596c4b58a.js" crossorigin="anonymous"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 {{ parent() }}
 {% endblock %}
@@ -12,23 +13,47 @@
     {# divider  #}
     <div class="divider"></div>
     {# content  #}
-        <div class="container">
-            <img src="{{ uploaded_asset(cour.mainImage.src) }}" alt="{{ cour.mainImage.alt }}" style="display:block;margin:auto;"/>
-            <h1 class="text-centered mb-3">{{ cour.titre }}</h1>
+    <div class="container">
+        <div class="mb-5 mt-5" style="max-width:700px;object-fit:cover;display:block;margin:auto;">
+            <img src="{{ uploaded_asset(cour.mainImage.src) }}" alt="{{ cour.mainImage.alt }}" style="display:block;margin:auto;width:100%;"/>
+        </div>
+        <div class="d-flex justify-content-start">
+            <a href="{{ path('courses') }}" type="button" class="btn btn-secondary"><i class="fas fa-chevron-left"></i> Liste ds Cours </a>
+        </div>
+        {# titre #}
+        <h1 class="text-centered mb-3">
+        {{ cour.titre }}
         {% if is_granted("ROLE_ADMIN") %}
-			<div class="col m-3 d-flex">
-				<a href="{{ path('cours_edit', {id:cour.id}) }}" class="btn btn-warning d-block">Modifier</a>
-			</div>
-		{% endif %}
-        <div class="row justify-content-center">
+        <a href="{{ path('cours_edit', {id:cour.id}) }}" class="btn btn-warning">Modifier</a>
+        {% endif %}
+        </h1>
+        {# infos  #}
+        <div class="row justify-content-center mb-4">
             <div class="col-1">
                 <i class="far fa-clock"></i> <span>{{ cour.duration }}</span>
             </div>
-            <div class="col-1">
+            <div class="col-2">
                 <i class="fas fa-signal"></i> <span>{{ cour.level }}</span>
             </div>
         </div>
-        <p class="text-justify mt-5 mb-4">{{ cour.description }}</p>
-        <a href="{{ path('lesson_show', { 'slug' : cour.slug, 'order' : 1}) }}" class="btn btn-primary d-block mx-auto">Commencer</a>
+        {# content #}
+        {% if cour.description == "" %}
+        <p class="text-justify mb-5">{{ cour.description | raw }}</p>
+        {% else %}
+        {# alert #}
+        <div class="alert alert-warning mt-5 mb-5" role="alert">
+        Description en préparation
+        </div>
+        {% endif %}
+        {% if cour.lessons is not empty %}
+        <div class="d-flex justify-content-center">
+            <a href="{{ path('lesson_show', { 'slug' : cour.slug, 'order' : 1}) }}" class="btn btn-primary mb-5">Commencer</a>
+        </div>
+        {% else %}
+        {# alert #}
+        <div class="alert alert-warning mt-5 mb-5" role="alert">
+        Les Leçons sont en cours de préparation
+        </div>
+        {% endif %}
     </div>
 {% endblock %}

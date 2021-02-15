@@ -25,7 +25,7 @@
 					{# {% endif %} #}
 					<div class="card-body">
 						<h5 class="card-title">{{ courses.titre }}</h5>
-						<p class="card-text mb-2">{{ courses.description[0:130] }}...</p>
+						{# <p class="card-text mb-2">{{ courses.description[0:130]|raw }}...</p> #}
 						<a href="{{ path('show_cours', {id:courses.id}) }}" class="btn btn-primary">Voir</a>
 					</div>
 				</div>

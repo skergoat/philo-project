@@ -42,7 +42,7 @@ class HomeController extends AbstractController
      */
     public function courses(Request $request, CoursRepository $repository, PaginatorInterface $paginator): Response
     {   
-        $queryBuilder = $repository->findAll();     
+        $queryBuilder = $repository->findByDesc(); 
 
         $pagination = $paginator->paginate(
             $queryBuilder, /* query NOT result */

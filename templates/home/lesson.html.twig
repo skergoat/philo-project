@@ -15,11 +15,6 @@
 	</div>
 	<div class="content">
 		<div class="container">
-			{% if is_granted("ROLE_ADMIN") %}
-			<div class="col m-3 d-flex">
-				<a href="{{ path('lesson_edit', {'id': lesson.id}) }}" class="btn btn-warning d-block">Modifier</a>
-			</div>
-			{% endif %}
 			<div class="mb-5 row">
 				{% if lesson.orderId == 1 %}
 				<div class="col-6 d-flex justify-content-start">
@@ -39,7 +34,6 @@
 			</div>
 		</div>
 		<div class="container">
-
 			{# flash message #}
 			{% for message in app.flashes('notice') %}
 				<div class="alert alert-success" role="alert">
@@ -48,10 +42,16 @@
 			{% endfor %}
 
 			<div class="lesson main-content mb-5">
-				<h1 class="mb-4">{{ lesson.orderId }}. {{ lesson.title }}</h1>
+				{# title #}
+				<h1 class="mb-4">
+					{{ lesson.orderId }}. {{ lesson.title }} 
+					{% if is_granted("ROLE_ADMIN") %}
+					<a href="{{ path('lesson_edit', {'id': lesson.id}) }}" class="btn btn-warning">Modifier</a>
+					{% endif %}
+				</h1>
+				{# contet  #}
 				{{ lesson.content|raw }}
-				<br>
-				<div style="display:flex;justify-content:center;">
+				<div style="display:flex;justify-content:center;width:100%;">
 					{% if lesson.completed == false %}
 					<form method="post" action="{{ path('completed', {'id': lesson.id, 'value' : '1'}) }}">
 						<input type="hidden" name="completed">
@@ -64,8 +64,8 @@
 					</form>
 					{% endif %}
 				</div>
-			</div>
-			
+			</div><br>
+
 			<aside id="sidebar">
 				<div>
 					<h2 class="mb-4">Sommaire</h2>

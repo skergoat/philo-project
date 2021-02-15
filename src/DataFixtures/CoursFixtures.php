@@ -5,17 +5,31 @@ namespace App\DataFixtures;
 use App\Entity\Cours;
 use App\Service\SlugHelper;
 use App\Entity\CoursCardsImage;
+use App\Service\UploaderHelper;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\HttpFoundation\File\File;
 
 class CoursFixtures extends Fixture
 {
     private $slughelper; 
+    private $uploaderHelper;
 
-    public function __construct(SlugHelper $slugHelper) {
+    public function __construct(SlugHelper $slugHelper, UploaderHelper $uploaderHelper) {
         $this->slughelper = $slugHelper;
+        $this->uploaderHelper = $uploaderHelper;
     }   
+
+    // private function fakeUploadImage(): string
+    // {
+    //     $randomImage = 'https://picsum.photos/300';
+    //     $fs = new Filesystem();
+    //     $targetPath = sys_get_temp_dir().'/'.$randomImage;
+    //     $fs->copy(__DIR__.$randomImage, $targetPath, true);
+    //     return $this->uploaderHelper
+    //         ->uploadArticleImage(new File($targetPath));
+    // }
 
     public function load(ObjectManager $manager)
     {
@@ -23,6 +37,7 @@ class CoursFixtures extends Fixture
         for($i=0;$i<21;$i++) {
             // create image 
             $image = new CoursCardsImage();
+            // $imageFilename = $this->fakeUploadImage();
             $image->setSrc('https://picsum.photos/300');
             $image->setAlt('lorempicsum');
             // create course

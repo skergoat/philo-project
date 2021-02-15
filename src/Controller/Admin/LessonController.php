@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Cours;
 use App\Entity\Lesson;
 use App\Form\Lessons\LessonType;
+use App\Repository\CoursRepository;
 use App\Repository\LessonRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,20 +21,32 @@ class LessonController extends AbstractController
 {
 
     /**
-     * @Route("/new", name="lesson_new", methods={"GET","POST"})
+     * @Route("/new/{slug}", name="lesson_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, $slug, CoursRepository $coursRepository, LessonRepository $lessonRepository): Response
     {
         $lesson = new Lesson();
         $form = $this->createForm(LessonType::class, $lesson);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $lessons = $form->getData();
+            // get associated cours 
+            $cours = $coursRepository->findOneBy(['slug' => $slug]);
+            $cours->addLesson($lessons);
+            // edit order id 
+            $orderId = $lessonRepository->getLessonByCoursLength($cours->getId());
+            $lessons->setOrderId($orderId + 1);
+
+            // provisoire 
+            $lessons->setCompleted(0);
+
             $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($cours);
             $entityManager->persist($lesson);
             $entityManager->flush();
 
-            return $this->redirectToRoute('lesson_index');
+            return $this->redirectToRoute('cours_edit', ['id' =>  $cours->getId()]);
         }
 
         return $this->render('admin/lesson/new.html.twig', [

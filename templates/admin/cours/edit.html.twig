@@ -34,11 +34,12 @@
     {% endfor %}
     </div>
 
-    {{ include('admin/cours/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('admin/cours/_form.html.twig', {'button_label': 'Enregistrer'}) }}
 
     {# lessons index #}
     <div class="container">
         <h1 class="text-centered mt-5 mb-4">Leçons associées</h1>
+        <a href="{{ path('lesson_new', {slug:cour.slug}) }}" class="btn btn-primary" style="margin-bottom:30px;">Ajouter</a>
         {# pagination #}
         <div clss="d-flex justify-content-center mt-4">{{ knp_pagination_render(lessons) }}</div>
 

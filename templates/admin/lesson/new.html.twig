@@ -1,11 +1,11 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
 {% block title %}New Lesson{% endblock %}
 
 {% block body %}
-    <h1>Create new Lesson</h1>
+    <h1 class="text-centered mt-5">Créer une Leçon</h1>
 
-    {{ include('lesson/_form.html.twig') }}
+    {{ include('admin/lesson/_form.html.twig') }}
 
-    <a href="{{ path('lesson_index') }}">back to list</a>
+    {# <a href="{{ path('lesson_index') }}">back to list</a> #}
 {% endblock %}

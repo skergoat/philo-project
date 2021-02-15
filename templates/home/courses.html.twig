@@ -18,11 +18,11 @@
 			<div class="row">
 				{% for courses in cours %}
 				<div class="card mx-sm-auto mx-lg-1 mb-4" style="width: 18rem;">
-					{% if courses.mainimage.src == null %}
+					{# {% if courses.mainImage.src == null %}
 					<img src="http://via.placeholder.com/300" class="card-img-top" alt="...">
-					{% else %}
-					<img src="{{ courses.mainimage.src }}" class="card-img-top" alt="...">
-					{% endif %}
+					{% else %} #}
+					<img src="{{ uploaded_asset(courses.mainImage.src) }}" class="card-img-top" alt="...">
+					{# {% endif %} #}
 					<div class="card-body">
 						<h5 class="card-title">{{ courses.titre }}</h5>
 						<p class="card-text mb-2">{{ courses.description[0:130] }}...</p>

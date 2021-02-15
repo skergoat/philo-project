@@ -47,7 +47,7 @@ class HomeController extends AbstractController
         $pagination = $paginator->paginate(
             $queryBuilder, /* query NOT result */
             $request->query->getInt('page', 1)/*page number*/,
-            10/*limit per page*/
+            8/*limit per page*/
         );
 
         return $this->render('home/courses.html.twig', ['cours' => $pagination]);

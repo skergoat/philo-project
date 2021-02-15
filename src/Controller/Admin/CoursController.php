@@ -55,7 +55,7 @@ class CoursController extends AbstractController
             $cours = $form->getData();
             $uploadedFile = $form['mainImage']->getData();
             if ($uploadedFile) {
-                $newFilename = $uploaderHelper->uploadArticleImage($uploadedFile);
+                $newFilename = $uploaderHelper->uploadArticleImage($uploadedFile, null);
                 // save 
                 $image = new CoursCardsImage();
                 $image->setSrc($newFilename);
@@ -94,7 +94,7 @@ class CoursController extends AbstractController
             $uploadedFile = $form['mainImage']->getData();
             // image 
             if ($uploadedFile) {
-                $newFilename = $uploaderHelper->uploadArticleImage($uploadedFile);
+                $newFilename = $uploaderHelper->uploadArticleImage($uploadedFile, $cours->getMainImage()->getSrc());
                 // save 
                 $image = new CoursCardsImage();
                 $image->setSrc($newFilename);

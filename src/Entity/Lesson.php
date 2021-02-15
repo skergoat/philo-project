@@ -4,12 +4,14 @@ namespace App\Entity;
 
 use App\Repository\LessonRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 /**
  * @ORM\Entity(repositoryClass=LessonRepository::class)
  */
 class Lesson
 {
+    use TimestampableEntity;
     /**
      * @ORM\Id
      * @ORM\GeneratedValue

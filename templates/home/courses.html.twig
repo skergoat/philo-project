@@ -17,16 +17,20 @@
 		<div class="container">
 			<div class="row">
 				{% for courses in cours %}
-				<div class="card mx-sm-auto mx-lg-1 mb-4" style="width: 18rem;">
-					{# {% if courses.mainImage.src == null %}
-					<img src="http://via.placeholder.com/300" class="card-img-top" alt="...">
-					{% else %} #}
-					<img src="{{ uploaded_asset(courses.mainImage.src) }}" class="card-img-top" alt="...">
-					{# {% endif %} #}
-					<div class="card-body">
-						<h5 class="card-title">{{ courses.titre }}</h5>
-						{# <p class="card-text mb-2">{{ courses.description[0:130]|raw }}...</p> #}
-						<a href="{{ path('show_cours', {id:courses.id}) }}" class="btn btn-primary">Voir</a>
+				<div style="width: 18rem;">
+					<div class="card mx-sm-auto mx-lg-1 mb-4" >
+						{# {% if courses.mainImage.src == null %}
+						<img src="http://via.placeholder.com/300" class="card-img-top" alt="...">
+						{% else %} #}
+						<img src="{{ uploaded_asset(courses.mainImage.src) }}" class="card-img-top" alt="...">
+						{# {% endif %} #}
+						<div class="card-body">
+							<h5 class="card-title text-center">{{ courses.titre }}</h5>
+							<div class="d-flex justify-content-center">
+								{# <p class="card-text mb-2">{{ courses.description[0:130]|raw }}...</p> #}
+								<a href="{{ path('show_cours', {id:courses.id}) }}" class="btn btn-primary">Voir</a>
+							</div>
+						</div>
 					</div>
 				</div>
 				{% endfor %}
